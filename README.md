@@ -1,2 +1,2 @@
-Este es el github grupal de Proyectos de Ingeniería I
+Este es el github grupal de Proyectos de Ingeniería.
 
