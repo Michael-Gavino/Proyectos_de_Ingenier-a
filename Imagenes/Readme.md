@@ -15,3 +15,9 @@ IMAGEN 3:
 IMAGEN 4:
 
 ![Imagen 4](https://github.com/user-attachments/assets/cc623d1f-ce74-44d3-8cbb-ff2c5d872101)
+
+IMAGEN 5:
+
+![Imagen 5](https://github.com/user-attachments/assets/c95f814f-336e-4d41-b933-af1c96c48c43)
+
+IMAGEN 6:
