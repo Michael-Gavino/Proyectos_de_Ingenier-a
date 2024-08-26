@@ -95,7 +95,7 @@ IMAGEN 23:
 
 ![Imagen 23](https://github.com/user-attachments/assets/26aadb5a-82d1-4329-b6b7-dc8008bd2eb5)
 
-![foto](https://github.com/user-attachments/assets/36b23aaf-a278-4023-83a2-9c114da8efe9)
+![foto1](https://github.com/user-attachments/assets/61dbfbf5-35fd-4b7c-8ee8-c0bb4f994c6c)
 
 
 
