@@ -71,3 +71,31 @@ IMAGEN 17:
 IMAGEN 18:
 
 ![Imagen 18](https://github.com/user-attachments/assets/28e5b6ba-46e0-4610-ae09-fbe3880ebfdc)
+
+IMAGEN 19:
+
+![Imagen 19](https://github.com/user-attachments/assets/a31847d2-a5d3-43ca-a305-cb94147139f9)
+
+
+IMAGEN 20:
+
+![Imagen 20](https://github.com/user-attachments/assets/23cc52ce-a7c1-4c50-8870-2d755b23e41b)
+
+
+IMAGEN 21:
+
+![Imagen 21](https://github.com/user-attachments/assets/66fbcfff-5986-445e-b26d-a2f31f271d31)
+
+
+IMAGEN 22:
+
+![Imagen 22](https://github.com/user-attachments/assets/cd495310-9240-43ed-a389-0ee2a45dee37)
+
+IMAGEN 23:
+
+![Imagen 23](https://github.com/user-attachments/assets/26aadb5a-82d1-4329-b6b7-dc8008bd2eb5)
+
+
+
+
+
