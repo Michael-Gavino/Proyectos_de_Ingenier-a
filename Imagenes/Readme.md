@@ -21,3 +21,10 @@ IMAGEN 5:
 ![Imagen 5](https://github.com/user-attachments/assets/c95f814f-336e-4d41-b933-af1c96c48c43)
 
 IMAGEN 6:
+
+![Imagen 6](https://github.com/user-attachments/assets/5d0d247c-ff4c-43dc-9626-cabd9ef064d4)
+
+IMAGEN 7:
+
+![Imagen 7](https://github.com/user-attachments/assets/6535164f-f78c-414d-a6ef-fb0038e654c3)
+
