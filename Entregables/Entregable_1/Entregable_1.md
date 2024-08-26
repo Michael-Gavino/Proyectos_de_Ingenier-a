@@ -36,6 +36,9 @@ Se analizaron varios artículos para entender y comprender la predicción del Í
 ### Matriz de Evaluación y Heatmap de 2022
 
 Según los datos evidenciados (Figura 1 y 2):
+![figura_]()
+![figura_2](ruta_o_URL_de_la_imagen)
+
 
 - [CO] máxima 8 horas al día con el valor diario del índice AQI es 0.998721, lo que indica que es una correlación positiva. Se concluye que si [CO] aumenta, la calidad del aire medida por el AQI también empeora en proporción.
 - [CO] máxima 8 horas al día con el recuento diario de observaciones es 0.069491. Esto significa que hay una conexión positiva pero muy débil entre estos dos aspectos.
@@ -128,7 +131,7 @@ La regresión lineal muestra cómo la [CO] durante 8 horas al día impacta en el
 
 ## Discusión [opcional]
 
-Después de realizar la predicción utilizando el método de regresión para visualizar y explorar la relación de la concentración de monóxido de carbono (CO), la cual influye en el índice de calidad del aire (AQI) en Nevada con los datos recopilados durante los años de 2022 y 2023, se encontró que estos son muy importantes para entrenar al modelo y obtener resultados similares a la realidad. Con el modelo de regresión, se pudieron ajustar los datos para un resultado más preciso en la predicción del (AQI), con ajustes de error absoluto medio, error cuadrático medio y el puntaje R^2. Estos resultados demuestran la relación entre la predicción y la concentración de dióxido de carbono; mientras mayores sean los resultados en cuanto a AQI, peor será la calidad del aire.
+Después de realizar la predicción utilizando el método de regresión para visualizar y explorar la relación de la concentración de monóxido de carbono (CO), la cual influye en el índice de calidad del aire (AQI) en Nevada con los datos recopilados durante los años de 2022 y 2023, datos de frecuencia de la concentración máxima diaria de CO en 8 horas vs Índice de Calidad del Aire diario se encontró que estos son muy importantes para entrenar al modelo y obtener resultados similares a la realidad. Con el modelo de regresión, se pudieron ajustar los datos para un resultado más preciso en la predicción del (AQI), con ajustes de error absoluto medio, error cuadrático medio y el puntaje R^2. Estos resultados demuestran la relación entre la predicción y la concentración de dióxido de carbono; mientras mayores sean los resultados en cuanto a AQI, peor será la calidad del aire.
 
 Con los datos anteriores, podemos predecir con precisión el índice de calidad del aire (AQI) de Nevada con un buen ajuste de datos y así ayudar a la salud pública y a tomar mejores decisiones para disminuir el monóxido de carbono en la atmósfera y otros gases, implementando estrategias como el uso de vehículos eléctricos, menos uso de gas butano y propano, entre otros.
 
