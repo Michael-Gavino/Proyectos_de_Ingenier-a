@@ -36,6 +36,9 @@ Se analizaron varios artículos para entender y comprender la predicción del Í
 ### Matriz de Evaluación y Heatmap de 2022
 
 Según los datos evidenciados (Figura 1 y 2):
+![figura_]()
+![figura_2](ruta_o_URL_de_la_imagen)
+
 
 - [CO] máxima 8 horas al día con el valor diario del índice AQI es 0.998721, lo que indica que es una correlación positiva. Se concluye que si [CO] aumenta, la calidad del aire medida por el AQI también empeora en proporción.
 - [CO] máxima 8 horas al día con el recuento diario de observaciones es 0.069491. Esto significa que hay una conexión positiva pero muy débil entre estos dos aspectos.
