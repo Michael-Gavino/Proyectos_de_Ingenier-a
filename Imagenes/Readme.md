@@ -28,18 +28,34 @@ IMAGEN 7:
 
 ![Imagen 7](https://github.com/user-attachments/assets/fc934be6-1242-4f72-ae7f-f132f459cd38)
 
+IMAGEN 8:
+
 ![Imagen 8](https://github.com/user-attachments/assets/42589414-84d8-44db-8d96-f3aee5673a6c)
+
+IMAGEN 9:
 
 ![Imagen 9](https://github.com/user-attachments/assets/2b2adce1-563f-4b26-b009-7719be60070f)
 
+IMAGEN 10:
+
 ![Imagen 10](https://github.com/user-attachments/assets/69281675-2ed0-498f-8e73-b656eea6bacc)
+
+IMAGEN 11:
 
 ![Imagen 11](https://github.com/user-attachments/assets/9d07e77b-4580-43f0-8ccb-b06aa17957c6)
 
+IMAGEN 12:
+
 ![Imagen 12](https://github.com/user-attachments/assets/fb9c1f71-b656-403e-ba7d-fbf0ab1b003b)
+
+IMAGEN 13:
 
 ![Imagen 13](https://github.com/user-attachments/assets/52d3f63d-f0de-4d14-ba56-f4a302a0676d)
 
+IMAGEN 14:
+
 ![Imagen 14](https://github.com/user-attachments/assets/7a162675-8ff4-4f25-90b3-b3215e33958e)
+
+IMAGEN 15:
 
 ![Imagen 15](https://github.com/user-attachments/assets/72fd88e2-1e53-4982-bb7c-725b5dfccc0c)
