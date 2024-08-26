@@ -89,6 +89,13 @@ IMAGEN 21:
 
 IMAGEN 22:
 
+![Imagen 22](https://github.com/user-attachments/assets/cd495310-9240-43ed-a389-0ee2a45dee37)
+
+IMAGEN 23:
+
+![Imagen 23](https://github.com/user-attachments/assets/26aadb5a-82d1-4329-b6b7-dc8008bd2eb5)
+
+IMAGEN 24:
 
 
 
