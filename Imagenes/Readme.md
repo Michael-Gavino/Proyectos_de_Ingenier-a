@@ -60,8 +60,14 @@ IMAGEN 15:
 
 ![Imagen 15](https://github.com/user-attachments/assets/b1ef4ba8-10dc-4a3f-8b26-050b78ad0a81)
 
+IMAGEN 16:
+
 ![Imagen 16](https://github.com/user-attachments/assets/271089be-95ad-4353-a0b7-1aed983a3fee)
 
+IMAGEN 17:
+
 ![Imagen 17](https://github.com/user-attachments/assets/ec532003-cc94-4d11-bd93-054b67500129)
+
+IMAGEN 18:
 
 ![Imagen 18](https://github.com/user-attachments/assets/28e5b6ba-46e0-4610-ae09-fbe3880ebfdc)
