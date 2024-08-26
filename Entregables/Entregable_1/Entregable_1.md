@@ -12,7 +12,7 @@ El monóxido de carbono es un gas que no se puede ver, es inodoro e insípido, y
 
 ### Visualización de datos
 
-Los datos fueron visualizados para identificar patrones y tendencias a lo largo del tiempo. La visualización es una parte crucial del análisis de datos, ya que permite una comprensión más clara de las variaciones y comportamientos de los contaminantes [^3][^4][^5].
+Los datos fueron visualizados para identificar patrones y tendencias a lo largo del tiempo. La visualización es una parte crucial del análisis de datos, ya que permite una comprensión más clara de las variaciones y comportamientos de los contaminantes.
 
 ### Seguimiento de la Guía de Laboratorio
 
@@ -25,11 +25,11 @@ Para realizar la regresión, se descargó información de uno de los indicadores
 - La carga de datos de los años 2022 y 2023 del CO.
 - La implementación de la regresión.
 - El entrenamiento del modelo.
-- La conversión [^5][^6].
+- La conversión.
 
 ### Análisis de artículos y búsqueda de información
 
-Se analizaron varios artículos para entender y comprender la predicción del Índice de Calidad del Aire y del contaminante monóxido de carbono. Para llevar a cabo esta búsqueda de información, se utilizaron herramientas como Google Académico con palabras clave como "Índice de Calidad del Aire", "monóxido de carbono" y "CO". Esta investigación bibliográfica es fundamental para contextualizar y validar los resultados obtenidos [^4].
+Se analizaron varios artículos para entender y comprender la predicción del Índice de Calidad del Aire y del contaminante monóxido de carbono. Para llevar a cabo esta búsqueda de información, se utilizaron herramientas como Google Académico con palabras clave como "Índice de Calidad del Aire", "monóxido de carbono" y "CO". Esta investigación bibliográfica es fundamental para contextualizar y validar los resultados obtenidos.
 
 ## Resultados
 
@@ -37,16 +37,15 @@ Se analizaron varios artículos para entender y comprender la predicción del Í
 
 Según los datos evidenciados (Figura 1 y 2):
 
-
-
 - [CO] máxima 8 horas al día con el valor diario del índice AQI es 0.998721, lo que indica que es una correlación positiva. Se concluye que si [CO] aumenta, la calidad del aire medida por el AQI también empeora en proporción.
 - [CO] máxima 8 horas al día con el recuento diario de observaciones es 0.069491. Esto significa que hay una conexión positiva pero muy débil entre estos dos aspectos.
 - [CO] máxima 8 horas al día con el porcentaje completado es 0.069766, lo que indica que el valor del AQI no parece estar directamente vinculado con la cantidad de observaciones diarias.
 
 **Figura 1:** Tabla de base de datos de 2022
 ![figura_](https://private-user-images.githubusercontent.com/166184502/361308679-5650fd6d-401d-41ea-bc34-404e968f65fd.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDg4MTksIm5iZiI6MTcyNDY0ODUxOSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzA4Njc5LTU2NTBmZDZkLTQwMWQtNDFlYS1iYzM0LTQwNGU5NjhmNjVmZC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTAxNTlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04OWEwYzZkZThiYzk5NDY5N2VhZmNmOTcwMzExYWQ3Njc5OWYxZjg3MDJlNmJiODMwMmQwY2NhZDBkNzIyOTIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.PBJZuZw3aCnOPTHantCTO6s-j71GLPLb4dM79TU5Svk)
+
 **Figura 2:** Matriz de correlación.
-![figura_2]([ruta_o_URL_de_la_imagen](https://private-user-images.githubusercontent.com/166184502/361309071-a25d9176-f953-4cc3-b9f2-675540b08220.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDg5MjAsIm5iZiI6MTcyNDY0ODYyMCwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzA5MDcxLWEyNWQ5MTc2LWY5NTMtNGNjMy1iOWYyLTY3NTU0MGIwODIyMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTAzNDBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xYTM0YjQ0YWE3MDg1Yzc5YzEyNWZiZmE3ZmY3ZGM0YWU1Nzc5MzE1Y2I3ODIyOGFlOTY4MjZkNjU3N2ViYmY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.TgxBoKqpmgfEbulQPqNZ5GDL7lkmswY2VOmT9Qc_ccQ))
+![figura_2](https://private-user-images.githubusercontent.com/166184502/361309071-a25d9176-f953-4cc3-b9f2-675540b08220.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDk2NTUsIm5iZiI6MTcyNDY0OTM1NSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzA5MDcxLWEyNWQ5MTc2LWY5NTMtNGNjMy1iOWYyLTY3NTU0MGIwODIyMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTE1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04Y2U4NTlmNjA1ZjVhYWU0YTVjMzRiZGIwMzllYzBjMGFkMTA2MTgwYjY4MjU4MDg4NTAzNGUxYzIzOTRhNzlkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.fJr9CW7YDpR_AprZe0zm84mVCJ01_wxn06WIRd1FRzo)
 ### Valores de Concentración de Monóxido de Carbono (CO)
 
 En incrementos en una gráfica de histograma que evidencia cómo se distribuye durante 8 horas al día (figura 3 y 4).
@@ -112,22 +111,22 @@ Según los datos evidenciados (Figura 17 y 18):
 ### Gráfica de Datos de Frecuencia de la Concentración Máxima Diaria de CO en 8 Horas vs Índice de Calidad del Aire Diario
 
 **Figura 19:** Gráfica de Daily Max 8-hour CO Concentration.
-![fig_19]()
+![fig_19](https://private-user-images.githubusercontent.com/166184502/361312657-a31847d2-a5d3-43ca-a305-cb94147139f9.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDk2NTUsIm5iZiI6MTcyNDY0OTM1NSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzEyNjU3LWEzMTg0N2QyLWE1ZDMtNDNjYS1hMzA1LWNiOTQxNDcxMzlmOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTE1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYWI4NThjNDdmYzIyZTdjODlhYmMyZDMyZTRiMzU3YWJiZDMxNDdhMTlkMmY1NmUxMDFlMWViNmUwNDZkNDhhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.LNDpdj9ajWHGo3O6gwQe_11BcBEvZk_S7RQ5WrO1XsY)
 Las observaciones más importantes de esta matriz son:
 
 - Existe una fuerte correlación positiva entre la concentración máxima de CO de 8 horas y el valor diario del índice de calidad del aire (ICA), lo que significa que a medida que aumenta la concentración de CO, también aumenta el valor de ICA, indicando una mala calidad del aire.
 - La mayoría de las otras variables (por ejemplo, códigos de identificación, número de observaciones, etc.) tienen una correlación muy baja o nula con la concentración de CO y el ICA. Esto sugiere que estas variables tienen un menor impacto en la calidad del aire en este caso particular.
 
 **Figura 20:** Gráfica de densidad de Daily Max 8-hour CO Concentration.
-
+![fig_20](https://private-user-images.githubusercontent.com/166184502/361312679-23cc52ce-a7c1-4c50-8870-2d755b23e41b.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDk2NTUsIm5iZiI6MTcyNDY0OTM1NSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzEyNjc5LTIzY2M1MmNlLWE3YzEtNGM1MC04ODcwLTJkNzU1YjIzZTQxYi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTE1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMTQxZTk2ZDQ2MDMzOGFjM2E2OTVkZDUzOWFiNjk2M2FiOGNhZDJiZTNhOWQxZDQ3ODhjMmU5MGRhOWQxM2UzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.I1GoJeMvmUxv6GmxbqpSHGdBSpbFi17ldBl1-jUNR6A)
 **Figura 21:** Gráfica de Daily AQI Value.
-
+![fig_21](https://private-user-images.githubusercontent.com/166184502/361312702-66fbcfff-5986-445e-b26d-a2f31f271d31.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDk2NTUsIm5iZiI6MTcyNDY0OTM1NSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzEyNzAyLTY2ZmJjZmZmLTU5ODYtNDQ1ZS1iMjZkLWEyZjMxZjI3MWQzMS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTE1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mOGIzNWViYTlhOWM4OGQ1ZTE5ZjlhYjRhYWMzZGI3ZjlmMTFkYTZiZDQ1MjE3NTk0M2I2MWRhODM3MmY1YWVjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.gZHy_Gh2g-wkrW-JzNxuk097mklisztrZy6SlOFn2gA)
 **Figura 22:** Gráfica de densidad de Daily AQI Value.
-
+![fig_22](https://private-user-images.githubusercontent.com/166184502/361313017-cd495310-9240-43ed-a389-0ee2a45dee37.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDk2NTUsIm5iZiI6MTcyNDY0OTM1NSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzEzMDE3LWNkNDk1MzEwLTkyNDAtNDNlZC1hMzg5LTBlZTJhNDVkZWUzNy5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTE1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xMzNmNTE0MGEzNjc0ZDNmYjdkMjI1ZjkyMDc0Y2Q3Y2Y5MjVlMTk5ZDE5OWNlNzAwNGNkZDIxYmNiYzA0NjVjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.uXQXBUspi36EXuw6pAFCnRgMEwawLkxPB8YA_nFllGE)
 La regresión lineal muestra cómo la [CO] durante 8 horas al día impacta en el Índice de Calidad del Aire.
 
 **Figura 23:**
-
+![fig_23](https://private-user-images.githubusercontent.com/166184502/361313059-26aadb5a-82d1-4329-b6b7-dc8008bd2eb5.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQ2NDk2NTUsIm5iZiI6MTcyNDY0OTM1NSwicGF0aCI6Ii8xNjYxODQ1MDIvMzYxMzEzMDU5LTI2YWFkYjVhLTgyZDEtNDMyOS1iNmI3LWRjODAwOGJkMmViNS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwODI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDgyNlQwNTE1NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00ZTczZGQ2NGU3MGEyMzYyN2Q4ZTdiMzY3ZDdmOTAxMDZmZTBlODJiZmM1ZTk0YTY2NmE4YWYzN2UzYzFkMDA5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.h0319-p7VTu24lkA0YdK_9QhJXfmV4ynJshrRxJ4Z9k)
 ## Discusión [opcional]
 
 Después de realizar la predicción utilizando el método de regresión para visualizar y explorar la relación de la concentración de monóxido de carbono (CO), la cual influye en el índice de calidad del aire (AQI) en Nevada con los datos recopilados durante los años de 2022 y 2023, datos de frecuencia de la concentración máxima diaria de CO en 8 horas vs Índice de Calidad del Aire diario se encontró que estos son muy importantes para entrenar al modelo y obtener resultados similares a la realidad. Con el modelo de regresión, se pudieron ajustar los datos para un resultado más preciso en la predicción del (AQI), con ajustes de error absoluto medio, error cuadrático medio y el puntaje R^2. Estos resultados demuestran la relación entre la predicción y la concentración de dióxido de carbono; mientras mayores sean los resultados en cuanto a AQI, peor será la calidad del aire.
@@ -138,10 +137,7 @@ Con los datos anteriores, podemos predecir con precisión el índice de calidad 
 
 [^1]: BLM. (s.f.). *Lands & Realty* – Nevada. Recuperado el 19 de agosto de 2023, de https://www.blm.gov/programs/lands-and-realty/nevada.
 [^2]: Organización Mundial de la Salud. (2023). *Monóxido de Carbono (CO) y su impacto en la salud*. Recuperado de https://www.who.int/.
-[^3]: EPA. (s.f.). *Air Quality Index Report | US EPA*. Recuperado el 15 de agosto de 2023, de https://www.epa.gov/outdoor-air-quality-data/air-quality-index-report.
-[^4]: LaGrone, M. (s.f.). *Data Analysis Techniques*. Journal of Data Science, 12(2), 55-67.
-[^5]: Martín, P. (2020). *Visualización de datos en Python*. Editorial Tech, pp. 112-130.
-[^6]: Ramírez, J. (2021). *Modelos de regresión en la ciencia ambiental*. Revista Ambiental, 28(3), 215-230.
+
 
 
 
