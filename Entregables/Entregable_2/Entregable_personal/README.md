@@ -8,7 +8,7 @@ Nombre de los Integrantes
 - **Huanca Ampuero Lila Zarai**
 - **Gavino Isidro Michael Richard**
 - **Manosalva Peralta Yojan Alexander**
-- - **Bertil Vasthian Rodriguez Valderrama**
+- **Bertil Vasthian Rodriguez Valderrama**
 
 ## Tarea Asignada
 Mejorar una red neuronal convolucional de gatos y perros y actualizarla con nuevas herramientas de Python.
