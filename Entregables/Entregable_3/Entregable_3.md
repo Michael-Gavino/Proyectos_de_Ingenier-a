@@ -132,6 +132,10 @@ Una vez entrenado y ajustado el modelo para nuestro problema, se configuró el f
 
 ## **5.  Discusion** 
 
+## **6. Conclusion** 
+
+La integración de TinyML en dispositivos como el Arduino Nano 33 BLE Sense ha abierto nuevas posibilidades para el reconocimiento de patrones en tiempo real, lo cual  demostra la posibilidad de usar modelos de aprendizaje automático ligeros en entornos de bajo consumo. La eficiencia de este dispositivo  es que tiene la capacidad de implementar soluciones de inteligencia artificial en hardware limitado, especialmente en el reconocimiento de formas y números.
+
 
 ## **6.  Referencias** 
 
