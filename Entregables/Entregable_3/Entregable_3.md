@@ -21,7 +21,7 @@ El modelo de TinyxML  es una  tecnología que se enfoca en el desarrollo de algo
 
 Nano 33 BLE sense es una placa que incluye sensores y capacidades de conectividad Bluetooth de baja energa . Esto es para los que requieren una interaccion con el entorno y cmunicacion inalambrica(Barrett, 2023).
 
-Este trabajo tiene como objetivo utilizar un modelo de TinyML en un Arduino Nano 33 BLE Sense para reconocer patrones de movimiento específicos  o mostrar cómo se puede aplicar la inteligencia artificial, incluso en dispositivos con recursos limitados como el Arduino, para tareas de reconocimiento de gestos y se explicarán los pasos necesarios para entrenar el modelo, implementarlo en el dispositivo y comprobar su funcionamiento.(1) y activar LEDs según el gesto detectado. Al aprovechar los sensores integrados del Arduino, el dispositivo podrá identificar movimientos que representan un círculo o los números "3" y "1", encendiendo diferentes LEDs como respuesta.(1) 
+Este trabajo tiene como objetivo utilizar un modelo de TinyML en un Arduino Nano 33 BLE Sense para reconocer patrones de movimiento específicos  o mostrar cómo se puede aplicar la inteligencia artificial, incluso en dispositivos con recursos limitados como el Arduino, para tareas de reconocimiento de gestos y se explicarán los pasos necesarios para entrenar el modelo, implementarlo en el dispositivo y comprobar su funcionamiento y activar LEDs según el gesto detectado. Al aprovechar los sensores integrados del Arduino, el dispositivo podrá identificar movimientos que representan un círculo o los números "3" y "1", encendiendo diferentes LEDs como respuesta.
 
 En concreto, el sistema está diseñado para:
 
@@ -277,11 +277,11 @@ Las funciones turn_off_leds y turn_on_leds manejan el estado de los LEDs. turn_o
 
 ## **4.  Resultados** 
 
-En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar modelos de TinyML, lo que representa un avance significativo en la inteligencia artificial aplicada a dispositivos portátiles. La habilidad del dispositivo para predecir con precisión los gestos del usuario, como un círculo, el número 3 o el número 1, sin necesidad de una conexión continua a la nube, marca un importante paso hacia la creación de dispositivos más autónomos y eficientes [4] (Kallimani et al., 2023).
+En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar modelos de TinyML, lo que representa un avance significativo en la inteligencia artificial aplicada a dispositivos portátiles. La habilidad del dispositivo para predecir con precisión los gestos del usuario, como un círculo, el número 3 o el número 1, sin necesidad de una conexión continua a la nube, marca un importante paso hacia la creación de dispositivos más autónomos y eficientes(Kallimani et al., 2023).
 
 Un aspecto destacado de esta implementación es la optimización en el uso de recursos y energía. Al realizar el procesamiento directamente en el dispositivo, se reduce la latencia y se mejora la experiencia del usuario, lo cual es crucial para aplicaciones en tiempo real. Esta capacidad también permite que el dispositivo funcione eficazmente en entornos con conectividad a Internet intermitente o nula, ampliando su utilidad en diversas situaciones.
 
-Sin embargo, es importante considerar las limitaciones actuales del modelo. La precisión de las predicciones puede verse afectada por factores como la variabilidad en los movimientos del usuario y el ruido ambiental. Por lo tanto, se recomienda que futuras investigaciones se centren en mejorar la robustez del modelo y en entrenarlo con un conjunto de datos más diverso para asegurar un rendimiento óptimo en diferentes condiciones [5] (Barrett, 2023).
+Sin embargo, es importante considerar las limitaciones actuales del modelo. La precisión de las predicciones puede verse afectada por factores como la variabilidad en los movimientos del usuario y el ruido ambiental. Por lo tanto, se recomienda que futuras investigaciones se centren en mejorar la robustez del modelo y en entrenarlo con un conjunto de datos más diverso para asegurar un rendimiento óptimo en diferentes condiciones(Barrett, 2023).
 
 ## **5.  Discusion** 
 
