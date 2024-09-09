@@ -34,9 +34,9 @@ El desarrollo de este proyecto se dividió en varias fases, que van desde la rec
 
 ## **2. Captura de datos de movimiento**
 
-El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones.
+El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones. (figura 1)
 
-A continuación, se puede evidenciar lo mencionado:
+Figura 1:
 | Arduino Nano 33 BLE Sense | Edge Impulse |
 | ----------- | ----------- |
 | <img src=     /> | ![Dta_1](https://github.com/user-attachments/assets/7047107a-20dc-4a96-8c49-ed97abc11bba) /> |
