@@ -8,8 +8,6 @@
 - Lila Huanca
 - Michael Gavino
 - Alexander Manosalva
-- Lourdes Castillo
-- Bertil
 
 #
 
@@ -123,28 +121,32 @@ Una vez entrenado y ajustado el modelo para nuestro problema, se configuró el f
 ![Arduino_LH](https://github.com/user-attachments/assets/77e384fc-b56f-4660-aaca-3565dd585cef)
 
 
-## **3.3.  Implementación del modelo** 
+## **3.3.  Implementación del modelo_ En Arduino** 
+
+
 
 
 
 ## **4.  Resultados** 
 
+En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar modelos de TinyML, lo que representa un avance significativo en la inteligencia artificial aplicada a dispositivos portátiles. La habilidad del dispositivo para predecir con precisión los gestos del usuario, como un círculo, el número 3 o el número 1, sin necesidad de una conexión continua a la nube, marca un importante paso hacia la creación de dispositivos más autónomos y eficientes [4] (Kallimani et al., 2023).
+
+Un aspecto destacado de esta implementación es la optimización en el uso de recursos y energía. Al realizar el procesamiento directamente en el dispositivo, se reduce la latencia y se mejora la experiencia del usuario, lo cual es crucial para aplicaciones en tiempo real. Esta capacidad también permite que el dispositivo funcione eficazmente en entornos con conectividad a Internet intermitente o nula, ampliando su utilidad en diversas situaciones.
+
+Sin embargo, es importante considerar las limitaciones actuales del modelo. La precisión de las predicciones puede verse afectada por factores como la variabilidad en los movimientos del usuario y el ruido ambiental. Por lo tanto, se recomienda que futuras investigaciones se centren en mejorar la robustez del modelo y en entrenarlo con un conjunto de datos más diverso para asegurar un rendimiento óptimo en diferentes condiciones [5] (Barrett, 2023).
 
 ## **5.  Discusion** 
 
-## **6. Conclusion** 
-
-La integración de TinyML en dispositivos como el Arduino Nano 33 BLE Sense ha abierto nuevas posibilidades para el reconocimiento de patrones en tiempo real, lo cual  demostra la posibilidad de usar modelos de aprendizaje automático ligeros en entornos de bajo consumo. La eficiencia de este dispositivo  es que tiene la capacidad de implementar soluciones de inteligencia artificial en hardware limitado, especialmente en el reconocimiento de formas y números.
-
+En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar un modelo de TinyML entrenado con Edge Impulse. Esto permite al dispositivo predecir con precisión si los movimientos corresponden a un círculo, el número 3 o el número 1. Esta implementación subraya cómo los sistemas embebidos pueden llevar a cabo tareas complejas de reconocimiento de patrones sin necesidad de una conexión continua a la nube, al mismo tiempo que optimizan el uso de recursos y energía. Al combinar el aprendizaje automático con hardware eficiente, como el Arduino Nano 33 BLE Sense, y herramientas como Edge Impulse, hemos abierto nuevas posibilidades para el desarrollo de aplicaciones inteligentes en dispositivos compactos y de bajo consumo.
 
 ## **6.  Referencias** 
 
-1.A Machine Learning-Oriented Survey on Tiny Machine Learning. (2024). IEEE Journals & Magazine | IEEE Xplore. https://ieeexplore.ieee.org/abstract/document/10433185
+[1] A Machine Learning-Oriented Survey on Tiny Machine Learning. (2024). IEEE Journals & Magazine | IEEE Xplore. https://ieeexplore.ieee.org/abstract/document/10433185
 
-2.Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
+[2] Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
 
-Tsoukas, V., Gkogkidis, A., Boumpa, E., & Kakarountas, A. (2024). A Review on the emerging technology of TinyML. ACM Computing Surveys. https://doi.org/10.1145/3661820
+[3] Tsoukas, V., Gkogkidis, A., Boumpa, E., & Kakarountas, A. (2024). A Review on the emerging technology of TinyML. ACM Computing Surveys. https://doi.org/10.1145/3661820
 
-Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
+[4]  Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
 
-Barrett, S. F. (2023). Arduino V: Machine Learning. En Synthesis lectures on digital circuits and systems. https://doi.org/10.1007/978-3-031-21877-4
+[5] Barrett, S. F. (2023). Arduino V: Machine Learning. En Synthesis lectures on digital circuits and systems. https://doi.org/10.1007/978-3-031-21877-4
