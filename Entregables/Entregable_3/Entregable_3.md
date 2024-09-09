@@ -83,20 +83,33 @@ En cuanto a la configuración de parámetros, se optó por mantener las opciones
 ![C Espectrales_LH](https://github.com/user-attachments/assets/62cbe781-a89d-4f4d-8f61-da717fc491a2)
 
 
-## **3.1. Clasificación y entrenamiento** 
+## **3.1. Clasificación y entrenamiento**
 
 <table>
   <tr>
-    <th width="33%">En la configuración de la red neuronal, dejamos el número de ciclos de entrenamiento en 30 y la tasa de aprendizaje en 0.0005. La arquitectura de la red neuronal quedó de la siguiente manera:</th>
-    <th width="33%">Pasamos al entrenamiento de nuestro modelo y obtuvimos un 97.8% de exactitud y una pérdida de 0.04 en general, lo que evidencia que se trata de un modelo eficiente:</th>
-    <th width="33%">En la exploración de los datos, vistos gráficamente, queda así:</th>
+    <th width="33%">
+      En la configuración de la red neuronal, dejamos el número de ciclos de entrenamiento en 30 y la tasa de aprendizaje en 0.0005. La arquitectura de la red neuronal quedó de la siguiente manera:
+    </th>
+    <th width="33%">
+      Pasamos al entrenamiento de nuestro modelo y obtuvimos un 97.8% de exactitud y una pérdida de 0.04 en general, lo que evidencia que se trata de un modelo eficiente:
+    </th>
+    <th width="33%">
+      En la exploración de los datos, vistos gráficamente, queda así:
+    </th>
   </tr>
   <tr>
-    <td><img src="![Red Neuronal_LH](https://github.com/user-attachments/assets/86138184-94e6-4b2c-b1fb-1e962ceaff09)" width="400"/></td>
-    <td><img src="![Tabla_LH](https://github.com/user-attachments/assets/ebfad7f6-0804-4556-9cfa-122b7f17b028)" width="450"/></td>
-    <td><img src="![Imagenes Red_LH](https://github.com/user-attachments/assets/35e8e74b-32b0-4794-ad68-2d7780911676)" width="650"/></td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/86138184-94e6-4b2c-b1fb-1e962ceaff09" alt="Red Neuronal" width="400"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/ebfad7f6-0804-4556-9cfa-122b7f17b028" alt="Tabla de Resultados" width="450"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/35e8e74b-32b0-4794-ad68-2d7780911676" alt="Datos Gráficos" width="650"/>
+    </td>
   </tr>
 </table>
+
 
 
 De este modo, podemos ver que, aunque la predicción de nuestro modelo puede presentar algunas imprecisiones, estas son mínimas en comparación con la tasa de predicciones correctas.
