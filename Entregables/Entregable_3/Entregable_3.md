@@ -14,7 +14,7 @@
 #
 
 
-## **1. Introducción**
+## **1) Introducción**
 
 El modelo de TinyxML  es una  tecnología que se enfoca en el desarrollo de algoritmos  y modelos, ya sea  para desarrollar dispositivos autónomos (Tsoukas et al., 2024). También este modelo combina hardware y software para integrar modelos de Machine Learning y redes neuronales en dispositivos con recursos limitados  con   una  capacidad de  realizar análisis en tiempo real de los datos recopilados. la capacidad de realizar análisis en el dispositivo para múltiples modalidades de detección, como visión, audio y voz. Además, los dispositivos IoT que implementan TinyML en sus microcontroladores requieren menos dependencia de servicios en la nube, lo que a su vez reduce costos, consumo de energía, asi mismo fortalece la seguridad y privacidad de los datos de forma progresiva. Es beneficioso en muchas areas ya sea como  en la atención médica, industria , la agricultura, seguridad, etc. El crecimiento de TinyML  ha motivado a  nuevas  posibilidades  en la creación de diferentes recursos y herramientas compatibles con esta tecnología , como placas de desarrollo, frameworks, bibliotecas y otros conjuntos de herramientas (Kallimani et al., 2023).
 
@@ -28,13 +28,13 @@ Encender un LED rojo cuando se dibuja un círculo en el aire.
 Encender un LED azul cuando se dibuja el número 3.
 Encender un LED verde cuando se dibuja el número 1.
 
-## **1.1. Metodologia**
+## **2) Metodologia**
 
 
 Durante el tiempo en que se realizó la tarea, se revisó cuidadosamente en la plataforma blackboard.  Para realizar esta tarea ,se analizó algunos artículos con la finalidad de entender  como utilizar un modelo de TinyML en un Arduino Nano 33 BLE Sense .Para llevar a cabo nuestra búsqueda de información, hemos utilizado herramientas como Google Académico, science direct con  las palabras claves “TinyML” , “Tiny Machine Learning” y como los artículos eran de inglés usamos google traductor. 
 El desarrollo de este proyecto se dividió en varias fases, que van desde la recopilación de los datos de movimiento hasta la implementación del modelo en el Arduino Nano 33 BLE Sense. A continuación, se detalla cada uno de los pasos que seguimos para llevar a cabo el reconocimiento de gestos y la activación de los LEDs.
 
-## **2. Captura de datos de movimiento**
+## **2.1) Captura de datos de movimiento**
 
 El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones.
 
@@ -43,7 +43,7 @@ A continuación, se puede evidenciar lo mencionado:
 | ----------- |
 | ![Dta_1](https://github.com/user-attachments/assets/7047107a-20dc-4a96-8c49-ed97abc11bba) /> |
 
-## **2.1. Diseño de impulso**
+## **2.2) Diseño de impulso**
 
 Para recrear el proceso de creación del impulso en la plataforma Edge Impulse con los datos de series de tiempo obtenidos del Arduino Nano 33 BLE Sense, puedes seguir estos pasos detallados:
 
@@ -78,14 +78,14 @@ Clasificación: Entrenamiento de un modelo de clasificación con tres clases de 
 ![Impulce_LH](https://github.com/user-attachments/assets/538cd041-d8df-47e9-a47a-dce7944b8484)
 
 
-## **3. Características espectrales** 
+## **2.3) Características espectrales** 
 
 En cuanto a la configuración de parámetros, se optó por mantener las opciones predeterminadas. Al generar las características, el tiempo total de procesamiento fue de 40 ms y el uso máximo de RAM alcanzó los 5 KB. La configuración quedó establecida de la siguiente manera:
 
 ![C Espectrales_LH](https://github.com/user-attachments/assets/62cbe781-a89d-4f4d-8f61-da717fc491a2)
 
 
-## **3.1. Clasificación y entrenamiento**
+## **2.4) Clasificación y entrenamiento**
 
 <table>
   <tr>
@@ -116,14 +116,14 @@ En cuanto a la configuración de parámetros, se optó por mantener las opciones
 
 De este modo, podemos ver que, aunque la predicción de nuestro modelo puede presentar algunas imprecisiones, estas son mínimas en comparación con la tasa de predicciones correctas.
 
-## **3.2.  Despliegue** 
+## **2.5)  Despliegue** 
 
 Una vez entrenado y ajustado el modelo para nuestro problema, se configuró el formato del modelo como una biblioteca de Arduino, permitiendo así su programación en el Arduino Nano 33 BLE Sense.
 
 ![Arduino_LH](https://github.com/user-attachments/assets/77e384fc-b56f-4660-aaca-3565dd585cef)
 
 
-## **3.3.  Implementación del modelo_ En Arduino** 
+## **2.6) Implementación del modelo_ En Arduino** 
 
 En esta sección, describiremos la implementación del modelo de inferencia de gestos en una placa Arduino Nano 33 BLE Sense utilizando la plataforma Edge Impulse. Este código se encarga de capturar datos del acelerómetro, procesar estos datos a través de un modelo de TinyML y mostrar los resultados.
 
@@ -274,7 +274,7 @@ void turn_on_leds(int pred_index) {
 Las funciones turn_off_leds y turn_on_leds manejan el estado de los LEDs. turn_off_leds apaga todos los LEDs, mientras que turn_on_leds enciende el LED correspondiente según el índice de predicción del modelo.
 
 
-## **4.  Resultados** 
+## **3)  Resultados** 
 
 En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar modelos de TinyML, lo que representa un avance significativo en la inteligencia artificial aplicada a dispositivos portátiles. La habilidad del dispositivo para predecir con precisión los gestos del usuario, como un círculo, el número 3 o el número 1, sin necesidad de una conexión continua a la nube, marca un importante paso hacia la creación de dispositivos más autónomos y eficientes(Kallimani et al., 2023).
 
@@ -282,11 +282,11 @@ Un aspecto destacado de esta implementación es la optimización en el uso de re
 
 Sin embargo, es importante considerar las limitaciones actuales del modelo. La precisión de las predicciones puede verse afectada por factores como la variabilidad en los movimientos del usuario y el ruido ambiental. Por lo tanto, se recomienda que futuras investigaciones se centren en mejorar la robustez del modelo y en entrenarlo con un conjunto de datos más diverso para asegurar un rendimiento óptimo en diferentes condiciones(Barrett, 2023).
 
-## **5.  Discusion** 
+## **4)  Discusion** 
 
 En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar un modelo de TinyML entrenado con Edge Impulse. Esto permite al dispositivo predecir con precisión si los movimientos corresponden a un círculo, el número 3 o el número 1. Esta implementación subraya cómo los sistemas embebidos pueden llevar a cabo tareas complejas de reconocimiento de patrones sin necesidad de una conexión continua a la nube, al mismo tiempo que optimizan el uso de recursos y energía. Al combinar el aprendizaje automático con hardware eficiente, como el Arduino Nano 33 BLE Sense, y herramientas como Edge Impulse, hemos abierto nuevas posibilidades para el desarrollo de aplicaciones inteligentes en dispositivos compactos y de bajo consumo.
 
-## **6.  Referencias** 
+## **5)  Referencias** 
 - Tsoukas, V., Gkogkidis, A., Boumpa, E., & Kakarountas, A. (2024). A Review on the emerging technology of TinyML. ACM Computing Surveys. https://doi.org/10.1145/3661820
 - Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
 -  Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
