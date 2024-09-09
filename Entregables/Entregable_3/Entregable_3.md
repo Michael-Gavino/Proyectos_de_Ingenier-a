@@ -123,8 +123,153 @@ Una vez entrenado y ajustado el modelo para nuestro problema, se configuró el f
 
 ## **3.3.  Implementación del modelo_ En Arduino** 
 
+En esta sección, describiremos la implementación del modelo de inferencia de gestos en una placa Arduino Nano 33 BLE Sense utilizando la plataforma Edge Impulse. Este código se encarga de capturar datos del acelerómetro, procesar estos datos a través de un modelo de TinyML y mostrar los resultados.
 
+```cpp
+#include <Decteccion_de_gestos_inferencing.h>
+#include <Arduino_LSM9DS1.h>
+```
 
+En el inicio del código, incluimos las bibliotecas necesarias para la inferencia y la interacción con el acelerómetro. Decteccion_de_gestos_inferencing.h es el archivo generado por Edge Impulse que contiene las funciones necesarias para la inferencia. Arduino_LSM9DS1.h es la biblioteca para manejar el acelerómetro de tres ejes.
+
+```cpp
+#define NUM_FEATURES 124 // Número total de características esperadas (62 pares de X, Y)
+float features[NUM_FEATURES];
+```
+Definimos el número total de características (lecturas del acelerómetro) que se esperan para la inferencia y creamos un array features para almacenar estas lecturas.
+
+```cpp
+int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
+    memcpy(out_ptr, features + offset, length * sizeof(float));
+    return 0;
+}
+```
+
+La función raw_feature_get_data se encarga de copiar los datos desde el array features a la memoria que utilizará la función de inferencia. Este es un paso necesario para que el modelo pueda procesar los datos correctamente.
+
+```cpp
+void setup() {
+    Serial.begin(115200);
+    while (!Serial);
+    Serial.println("Edge Impulse Inferencing Demo");
+
+    pinMode(LEDR, OUTPUT);
+    pinMode(LEDG, OUTPUT);
+    pinMode(LEDB, OUTPUT);
+
+    turn_off_leds(); // Apaga todos los LEDs al inicio
+
+    if (!IMU.begin()) {
+        Serial.println("Failed to initialize IMU!");
+        while (1);
+    }
+}
+```
+
+En la función setup, inicializamos la comunicación serial para depuración y configuramos los pines. También inicializamos el IMU (unidad de medición inercial) y comprobamos si se inicializa correctamente. Si no se inicializa, se detiene el programa.
+
+```cpp
+void loop() {
+    ei_printf("Edge Impulse standalone inferencing (Arduino)\n");
+
+    for (int i = 0; i < NUM_FEATURES / 2; i++) {
+        if (IMU.accelerationAvailable()) {
+            float x, y, z;
+            IMU.readAcceleration(x, y, z);
+            features[2 * i] = x;
+            features[2 * i + 1] = y;
+        }
+        delay(100); // Ajusta el retraso si es necesario para sincronizar con la velocidad de muestreo
+    }
+```
+
+En el bucle principal loop, capturamos las lecturas del acelerómetro en tiempo real y las almacenamos en el array features. Cada lectura de aceleración (X e Y) se almacena en dos posiciones consecutivas del array. El retraso de 100 ms se ajusta para sincronizar con la velocidad de muestreo.
+
+```cpp
+    if (sizeof(features) / sizeof(float) != EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE) {
+        ei_printf("The size of your 'features' array is not correct. Expected %lu items, but had %lu\n",
+                  EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, sizeof(features) / sizeof(float));
+        delay(1000);
+        return;
+    }
+
+    ei_impulse_result_t result = { 0 };
+
+    signal_t features_signal;
+    features_signal.total_length = sizeof(features) / sizeof(features[0]);
+    features_signal.get_data = &raw_feature_get_data;
+
+    EI_IMPULSE_ERROR res = run_classifier(&features_signal, &result, false /* debug */);
+    if (res != EI_IMPULSE_OK) {
+        ei_printf("ERR: Failed to run classifier (%d)\n", res);
+        return;
+    }
+
+    ei_printf("run_classifier returned: %d\r\n", res);
+    print_inference_result(result);
+
+    delay(1000); // Pausa de 1 segundo antes de repetir el ciclo
+}
+```
+
+Luego verificamos que el tamaño del array features sea el esperado por el modelo. Si el tamaño es incorrecto, mostramos un mensaje de error y pausamos. Si el tamaño es correcto, preparamos la señal de entrada para el clasificador y llamamos a run_classifier para realizar la inferencia. Los resultados de la inferencia se procesan y se muestran mediante la función print_inference_result.
+
+```cpp
+void print_inference_result(ei_impulse_result_t result) {
+    ei_printf("Timing: DSP %d ms, inference %d ms, anomaly %d ms\r\n",
+              result.timing.dsp,
+              result.timing.classification,
+              result.timing.anomaly);
+
+    int max_index = -1;
+    float max_value = 0.0;
+
+    for (uint16_t i = 0; i < EI_CLASSIFIER_LABEL_COUNT; i++) {
+        ei_printf("  %s: ", ei_classifier_inferencing_categories[i]);
+        ei_printf("%.5f\r\n", result.classification[i].value);
+
+        if (result.classification[i].value > max_value) {
+            max_value = result.classification[i].value;
+            max_index = i;
+        }
+    }
+
+    turn_on_leds(max_index);
+
+#if EI_CLASSIFIER_HAS_ANOMALY
+    ei_printf("Anomaly prediction: %.3f\r\n", result.anomaly);
+#endif
+}
+```
+La función print_inference_result muestra los tiempos de procesamiento del modelo y los resultados de clasificación. Determina la categoría con el valor de confianza más alto y enciende el LED correspondiente usando la función turn_on_leds.
+
+```cpp
+void turn_off_leds() {
+    digitalWrite(LEDR, HIGH);
+    digitalWrite(LEDG, HIGH);
+    digitalWrite(LEDB, HIGH);
+}
+
+void turn_on_leds(int pred_index) {
+    turn_off_leds(); // Apaga todos los LEDs antes de encender uno
+
+    switch (pred_index) {
+        case 0:
+            digitalWrite(LEDR, LOW);
+            break;
+        case 1:
+            digitalWrite(LEDG, LOW);
+            break;
+        case 2:
+            digitalWrite(LEDB, LOW);
+            break;
+        default:
+            turn_off_leds();
+            break;
+    }
+}
+```
+Las funciones turn_off_leds y turn_on_leds manejan el estado de los LEDs. turn_off_leds apaga todos los LEDs, mientras que turn_on_leds enciende el LED correspondiente según el índice de predicción del modelo.
 
 
 ## **4.  Resultados** 
