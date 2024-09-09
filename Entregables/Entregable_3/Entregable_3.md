@@ -39,7 +39,7 @@ El primer paso fue obtener los datos necesarios para entrenar el modelo de recon
 A continuación, se puede evidenciar lo mencionado:
 | Arduino Nano 33 BLE Sense | Edge Impulse |
 | ----------- | ----------- |
-| <img src=     /> |   /> |
+| <img src=     /> | ![Dta_1](https://github.com/user-attachments/assets/7047107a-20dc-4a96-8c49-ed97abc11bba) /> |
 
 ## **2.1. Preprocesamiento de los Datos**
 
