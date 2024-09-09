@@ -31,7 +31,7 @@
 // Generated on: 06.09.2024 21:57:14
 
 /* Includes ---------------------------------------------------------------- */
-#include <A_inferencing.h>
+#include <Decteccion_de_gestos_inferencing.h>
 #include <Arduino_LSM9DS1.h>
 
 #define NUM_FEATURES 124 // Número total de características esperadas (62 pares de X, Y)
