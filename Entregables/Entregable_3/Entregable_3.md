@@ -289,12 +289,12 @@ En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense pa
 
 ## **6.  Referencias** 
 
-[1] A Machine Learning-Oriented Survey on Tiny Machine Learning. (2024). IEEE Journals & Magazine | IEEE Xplore. https://ieeexplore.ieee.org/abstract/document/10433185
+-A Machine Learning-Oriented Survey on Tiny Machine Learning. (2024). IEEE Journals & Magazine | IEEE Xplore. https://ieeexplore.ieee.org/abstract/document/10433185
 
-[2] Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
+-Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
 
-[3] Tsoukas, V., Gkogkidis, A., Boumpa, E., & Kakarountas, A. (2024). A Review on the emerging technology of TinyML. ACM Computing Surveys. https://doi.org/10.1145/3661820
+- Tsoukas, V., Gkogkidis, A., Boumpa, E., & Kakarountas, A. (2024). A Review on the emerging technology of TinyML. ACM Computing Surveys. https://doi.org/10.1145/3661820
 
-[4]  Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
+- Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
 
-[5] Barrett, S. F. (2023). Arduino V: Machine Learning. En Synthesis lectures on digital circuits and systems. https://doi.org/10.1007/978-3-031-21877-4
+-Barrett, S. F. (2023). Arduino V: Machine Learning. En Synthesis lectures on digital circuits and systems. https://doi.org/10.1007/978-3-031-21877-4
