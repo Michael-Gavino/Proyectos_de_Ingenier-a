@@ -4,10 +4,13 @@
 # **Curso:**
 ### Proyectos de Ingeniería 1
 
-# **Integrantes:**
-- Lila Huanca
-- Michael Gavino
-- Alexander Manosalva
+# **Nombre de los Integrantes:**
+
+- **Castillo Ore Lourdes**
+- **Huanca Ampuero Lila Zarai**
+- **Gavino Isidro Michael Richard**
+- **Manosalva Peralta Yojan Alexander**
+- **Bertil Vasthian Rodriguez Valderrama**
 
 #
 
