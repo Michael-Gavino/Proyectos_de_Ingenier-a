@@ -34,9 +34,9 @@ El desarrollo de este proyecto se dividió en varias fases, que van desde la rec
 
 ## **2. Captura de datos de movimiento**
 
-El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones. (figura 1)
+El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones.
 
-Figura 1:
+A continuación, se puede evidenciar lo mencionado:
 | Arduino Nano 33 BLE Sense | Edge Impulse |
 | ----------- | ----------- |
 | <img src=     /> | ![Dta_1](https://github.com/user-attachments/assets/7047107a-20dc-4a96-8c49-ed97abc11bba) /> |
@@ -64,7 +64,13 @@ Finalmente, realizamos pruebas completas con el sistema en funcionamiento. Repet
 ## **4.  Resultados** 
 
 
-## **5.  Discusion** 
+## **5. Conclusión y  Discusion** 
+
+-La implementación  de TinyML en el Arduino Nano 33 BLE Sense para el reconocimiento de formas y números evidencia un avance significativo en la convergencia de la inteligencia artificial y la computación embebida.
+-La tecnología TinyML en Arduino permite reconocer patrones de forma eficiente
+-La respuesta rápida del sistema al identificar patrones mejora la interacción con el usuario.
+-La adaptación de TinyML en dispositivos embebidos abre nuevas posibilidades en IoT y la interacción con máquinas.
+
 
 
 ## **6.  Referencias** 
