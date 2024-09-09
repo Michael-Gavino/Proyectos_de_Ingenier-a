@@ -8,6 +8,8 @@
 - Lila Huanca
 - Michael Gavino
 - Alexander Manosalva
+- Lourdes Castillo
+- Bertil
 
 #
 
