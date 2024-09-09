@@ -288,13 +288,9 @@ Sin embargo, es importante considerar las limitaciones actuales del modelo. La p
 En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense para ejecutar un modelo de TinyML entrenado con Edge Impulse. Esto permite al dispositivo predecir con precisión si los movimientos corresponden a un círculo, el número 3 o el número 1. Esta implementación subraya cómo los sistemas embebidos pueden llevar a cabo tareas complejas de reconocimiento de patrones sin necesidad de una conexión continua a la nube, al mismo tiempo que optimizan el uso de recursos y energía. Al combinar el aprendizaje automático con hardware eficiente, como el Arduino Nano 33 BLE Sense, y herramientas como Edge Impulse, hemos abierto nuevas posibilidades para el desarrollo de aplicaciones inteligentes en dispositivos compactos y de bajo consumo.
 
 ## **6.  Referencias** 
-
--A Machine Learning-Oriented Survey on Tiny Machine Learning. (2024). IEEE Journals & Magazine | IEEE Xplore. https://ieeexplore.ieee.org/abstract/document/10433185
-
--Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
-
 - Tsoukas, V., Gkogkidis, A., Boumpa, E., & Kakarountas, A. (2024). A Review on the emerging technology of TinyML. ACM Computing Surveys. https://doi.org/10.1145/3661820
+- Freitag, F., Roger, P. C., & De Catalunya Departament D’Arquitectura de Computadors, U. P. (2021, 30 junio). Aplicación de modelos de aprendizaje automático en microcontroladores. https://upcommons.upc.edu/handle/2117/356304
+-  Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
+- Barrett, S. F. (2023). Arduino V: Machine Learning. En Synthesis lectures on digital circuits and systems. https://doi.org/10.1007/978-3-031-21877-4
+- A Machine Learning-Oriented Survey on Tiny Machine Learning. (2024). IEEE Journals & Magazine | IEEE Xplore. https://ieeexplore.ieee.org/abstract/document/10433185
 
-- Kallimani, R., Pai, K., Raghuwanshi, P., Iyer, S., & López, O. L. A. (2023). TinyML: Tools, applications, challenges, and future research directions. Multimedia Tools And Applications, 83(10), 29015-29045. https://doi.org/10.1007/s11042-023-16740-9
-
--Barrett, S. F. (2023). Arduino V: Machine Learning. En Synthesis lectures on digital circuits and systems. https://doi.org/10.1007/978-3-031-21877-4
