@@ -34,32 +34,83 @@ El desarrollo de este proyecto se dividió en varias fases, que van desde la rec
 
 ## **2. Captura de datos de movimiento**
 
-El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones. (figura 1)
+El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones.
 
-Figura 1:
-| Arduino Nano 33 BLE Sense | Edge Impulse |
-| ----------- | ----------- |
-| <img src=     /> | ![Dta_1](https://github.com/user-attachments/assets/7047107a-20dc-4a96-8c49-ed97abc11bba) /> |
+A continuación, se puede evidenciar lo mencionado:
+| Edge Impulse |
+| ----------- |
+| ![Dta_1](https://github.com/user-attachments/assets/7047107a-20dc-4a96-8c49-ed97abc11bba) /> |
 
-## **2.1. Preprocesamiento de los Datos**
+## **2.1. Diseño de impulso**
 
-Una vez recogidos los datos, realizamos un preprocesamiento básico. Esto incluyó normalizar los valores para que los datos fueran comparables entre sí y filtrar el ruido no deseado que pudiera interferir con el modelo. También segmentamos los movimientos en pequeñas ventanas de tiempo, lo que permitió que el modelo de aprendizaje automático identificara patrones claros y diferenciados.
+Para recrear el proceso de creación del impulso en la plataforma Edge Impulse con los datos de series de tiempo obtenidos del Arduino Nano 33 BLE Sense, puedes seguir estos pasos detallados:
 
-## **3. Creación y Entrenamiento del Modelo TinyML** 
+Recolección de Datos:
 
-Con los datos listos, el siguiente paso fue desarrollar un modelo de aprendizaje automático lo suficientemente ligero como para correr en el Arduino. Utilizamos TensorFlow Lite para crear una red neuronal sencilla. Entrenamos el modelo con los datos etiquetados de cada gesto, ajustando la estructura y los parámetros para obtener buenos resultados sin comprometer la velocidad ni el tamaño del modelo.(Barrett, S. F. (2023))
+Sensores Utilizados: Arduino Nano 33 BLE Sense.
+Sensores Específicos: Acelerómetro, giroscopio y magnetómetro.
+Ejes de Datos: accX, accY, accZ (acelerómetro); gyrX, gyrY, gyrZ (giroscopio); magX, magY, magZ (magnetómetro).
+Tamaño de Ventana: 3 segundos para la segmentación de datos.
+Preparación de Datos:
 
-## **3.1. Validación del Modelo** 
+Segmentación: Los datos se segmentan en ventanas de 3 segundos.
+Características Espectrales: Se extraen características espectrales de las ventanas de datos utilizando un análisis espectral. Este análisis puede incluir transformadas de Fourier u otras técnicas que permitan identificar patrones y características relevantes en el dominio de la frecuencia.
+Procesamiento:
 
-Antes de cargar el modelo en el Arduino, realizamos pruebas para verificar su precisión y capacidad de generalización. Probamos varias configuraciones y ajustamos los hiperparámetros hasta que el modelo alcanzó un nivel aceptable de precisión para reconocer correctamente los tres gestos, sin confundirlos entre sí.(Barrett, S. F. (2023))
+Bloque de Procesamiento: En el análisis espectral, asegúrate de verificar que el bloque de procesamiento esté configurado para manejar los ejes de entrada. Esto implica aplicar el análisis espectral a los datos de los sensores para extraer características relevantes.
+Entrenamiento del Modelo:
 
-## **3.2.  Implementación en el Arduino Nano 33 BLE Sense** 
+Bloque de Aprendizaje: Utiliza un bloque de clasificación para el aprendizaje automático.
+Entrada: Características espectrales extraídas de los datos segmentados.
+Salida: Las tres clases que estás tratando de clasificar. En este caso, las clases son: "círculo", "tres" y "uno".
+Características de Salida:
 
-Una vez que el modelo estaba entrenado y validado, lo cargamos en el Arduino Nano 33 BLE Sense utilizando TensorFlow Lite . El código se encargó de procesar las predicciones del modelo y activar los LEDs correspondientes: rojo para un círculo, azul para un 3, y verde para un 1. Esta fase requirió integrar el modelo con el hardware para que pudiera reaccionar en tiempo real a los movimientos.
+Clases a Identificar: El modelo entrenado debe ser capaz de distinguir entre las tres clases especificadas: "círculo", "tres" y "uno". Estas clases corresponden a las etiquetas que se han asignado a las ventanas de datos durante el proceso de etiquetado.
+Resumen del Proceso:
 
-## **3.3.  Pruebas Finales y Optimización** 
+Recopilación de Datos: Datos de los ejes de acelerómetro, giroscopio y magnetómetro del Arduino Nano 33 BLE Sense.
+Segmentación: Ventanas de 3 segundos.
+Análisis Espectral: Extracción de características espectrales.
+Clasificación: Entrenamiento de un modelo de clasificación con tres clases de salida ("círculo", "tres", "uno").
 
-Finalmente, realizamos pruebas completas con el sistema en funcionamiento. Repetimos los gestos en distintas condiciones para asegurarnos de que el modelo respondiera de manera precisa y consistente. Hicimos algunos ajustes en el código y optimizamos el comportamiento del modelo para mejorar la experiencia del usuario y la confiabilidad del sistema en general.
+![Impulce_LH](https://github.com/user-attachments/assets/538cd041-d8df-47e9-a47a-dce7944b8484)
+
+
+## **3. Características espectrales** 
+
+En cuanto a la configuración de parámetros, se optó por mantener las opciones predeterminadas. Al generar las características, el tiempo total de procesamiento fue de 40 ms y el uso máximo de RAM alcanzó los 5 KB. La configuración quedó establecida de la siguiente manera:
+
+![C Espectrales_LH](https://github.com/user-attachments/assets/62cbe781-a89d-4f4d-8f61-da717fc491a2)
+
+
+## **3.1. Clasificación y entrenamiento** 
+
+<table>
+  <tr>
+    <th width="33%">En la configuración de la red neuronal, dejamos el número de ciclos de entrenamiento en 30 y la tasa de aprendizaje en 0.0005. La arquitectura de la red neuronal quedó de la siguiente manera:</th>
+    <th width="33%">Pasamos al entrenamiento de nuestro modelo y obtuvimos un 97.8% de exactitud y una pérdida de 0.04 en general, lo que evidencia que se trata de un modelo eficiente:</th>
+    <th width="33%">En la exploración de los datos, vistos gráficamente, queda así:</th>
+  </tr>
+  <tr>
+    <td><img src="![Red Neuronal_LH](https://github.com/user-attachments/assets/86138184-94e6-4b2c-b1fb-1e962ceaff09)" width="400"/></td>
+    <td><img src="![Tabla_LH](https://github.com/user-attachments/assets/ebfad7f6-0804-4556-9cfa-122b7f17b028)" width="450"/></td>
+    <td><img src="![Imagenes Red_LH](https://github.com/user-attachments/assets/35e8e74b-32b0-4794-ad68-2d7780911676)" width="650"/></td>
+  </tr>
+</table>
+
+
+De este modo, podemos ver que, aunque la predicción de nuestro modelo puede presentar algunas imprecisiones, estas son mínimas en comparación con la tasa de predicciones correctas.
+
+## **3.2.  Despliegue** 
+
+Una vez entrenado y ajustado el modelo para nuestro problema, se configuró el formato del modelo como una biblioteca de Arduino, permitiendo así su programación en el Arduino Nano 33 BLE Sense.
+
+![Arduino_LH](https://github.com/user-attachments/assets/77e384fc-b56f-4660-aaca-3565dd585cef)
+
+
+## **3.3.  Implementación del modelo** 
+
+
 
 ## **4.  Resultados** 
 
