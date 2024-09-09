@@ -1,8 +1,7 @@
 # Tema:
 ### Implementación de TinyML en Arduino para el Reconocimiento de Formas y Números
 
-# **Curso:**
-### Proyectos de Ingeniería 1
+# **Curso:** Proyectos de Ingeniería 1
 
 # **Nombre de los Integrantes:**
 
