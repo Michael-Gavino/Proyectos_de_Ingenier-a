@@ -36,6 +36,11 @@ El desarrollo de este proyecto se dividió en varias fases, que van desde la rec
 
 El primer paso fue obtener los datos necesarios para entrenar el modelo de reconocimiento de gestos. Usando los sensores de movimiento del Arduino Nano 33 BLE Sense, registramos los gestos deseados: el dibujo de un círculo, el número 3, y el número 1. Para garantizar que el modelo pudiera generalizar bien, repetimos cada gesto varias veces y bajo diferentes condiciones.
 
+A continuación, se puede evidenciar lo mencionado:
+| Arduino Nano 33 BLE Sense | Edge Impulse |
+| ----------- | ----------- |
+| <img src=     /> |   /> |
+
 ## **2.1. Preprocesamiento de los Datos**
 
 Una vez recogidos los datos, realizamos un preprocesamiento básico. Esto incluyó normalizar los valores para que los datos fueran comparables entre sí y filtrar el ruido no deseado que pudiera interferir con el modelo. También segmentamos los movimientos en pequeñas ventanas de tiempo, lo que permitió que el modelo de aprendizaje automático identificara patrones claros y diferenciados.
