@@ -97,7 +97,10 @@ IMAGEN 23:
 
 ![foto1](https://github.com/user-attachments/assets/61dbfbf5-35fd-4b7c-8ee8-c0bb4f994c6c)
 
-
+Video1
+https://github.com/user-attachments/assets/0525ea6d-a2cc-489f-af6f-a7811ad78838
+Imagen 24
+![WhatsApp Image 2024-09-09 at 4 38 53 PM (1)](https://github.com/user-attachments/assets/aa00fa4b-83a9-422a-969d-baf3ea010162)
 
 
 
