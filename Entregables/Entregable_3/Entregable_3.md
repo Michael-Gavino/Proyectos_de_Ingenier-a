@@ -280,6 +280,30 @@ En este proyecto, hemos demostrado la capacidad del Arduino Nano 33 BLE Sense pa
 Un aspecto destacado de esta implementación es la optimización en el uso de recursos y energía. Al realizar el procesamiento directamente en el dispositivo, se reduce la latencia y se mejora la experiencia del usuario, lo cual es crucial para aplicaciones en tiempo real. Esta capacidad también permite que el dispositivo funcione eficazmente en entornos con conectividad a Internet intermitente o nula, ampliando su utilidad en diversas situaciones.
 
 Sin embargo, es importante considerar las limitaciones actuales del modelo. La precisión de las predicciones puede verse afectada por factores como la variabilidad en los movimientos del usuario y el ruido ambiental. Por lo tanto, se recomienda que futuras investigaciones se centren en mejorar la robustez del modelo y en entrenarlo con un conjunto de datos más diverso para asegurar un rendimiento óptimo en diferentes condiciones(Barrett, 2023).
+## ** Evidencia:
+Video 1:
+
+https://github.com/user-attachments/assets/0525ea6d-a2cc-489f-af6f-a7811ad78838
+
+Imagen 1
+![WhatsApp Image 2024-09-09 at 4 38 53 PM (1)](https://github.com/user-attachments/assets/aa00fa4b-83a9-422a-969d-baf3ea010162)
+
+
+Imagen2
+![WhatsApp Image 2024-09-09 at 4 38 53 PM (2)](https://github.com/user-attachments/assets/47b10808-5a10-482b-ac85-868ff38fb2f3)
+
+
+Imagen 3
+![WhatsApp Image 2024-09-09 at 4 38 53 PM (3)](https://github.com/user-attachments/assets/9db6c4bb-8e42-4654-8155-a86375284790)
+
+
+Imagen 4
+![WhatsApp Image 2024-09-09 at 4 38 52 PM](https://github.com/user-attachments/assets/f05f62a3-348e-4ae0-bfe5-21b2995910e2)
+
+
+Imagen 5
+![WhatsApp Image 2024-09-09 at 4 38 53 PM](https://github.com/user-attachments/assets/705c2111-5c8a-47aa-9d1a-1013bb819b75)
+
 
 ## **4)  Discusion** 
 
