@@ -76,4 +76,33 @@ Monitorear y controlar los parámetros del agua como turbidez, conductividad y p
 |                          | Eficiencia energética                              | Uso de paneles solares y diseño eficiente para maximizar la sostenibilidad energética del sistema.          |
 
 ---
+# Diagrama de circuitos electricos:
+
+### Circuito esquemático de sistema central:
+
+### Circuito esquemático del sistema receptor con sensores:
+
+# Modelado 3D
+## Caja Principal
+| Vista imagen 1 |
+|------------------|
+![Cjaaaaa](https://github.com/user-attachments/assets/7b6e6c4d-f58a-43f7-b7d4-1eec4e2d3068)  "Imagen 1") 
+
+
+
+## Dispositivo de monitoreo
+| Vista general |
+|---------------|
+| ![Diseño General](https://github.com/user-attachments/assets/d0d685c6-91f4-419a-887e-7c0aeb59b149 "Imagen 1") 
+
+
+# Referencias:
+
+[1] Sensor de turbidez de agua. (s. f.). Naylamp Mechatronics - Perú. Recuperado 18 de enero de 2024. https://naylampmechatronics.com/sensores-liquido/535-sensor-de-turbiedad-de-agua.html
+
+[2] Razman, N. A., Wan Ismail, W. Z., Abd Razak, M. H., Ismail, I., & Jamaludin, J. (2023). Design and analysis of water quality monitoring and filtration system for different types of water in Malaysia. International Journal of Environmental Science and Technology: IJEST, 20(4), 3789-3800. https://doi.org/10.1007/s13762-022-04192-x
+
+[3] Konde, S., & Deosarkar, D. S. (2020). IOT Based Water Quality Monitoring System (SSRN Scholarly Paper 3645467). https://doi.org/10.2139/ssrn.3645467
+
+[4] Fernandez Alvarez, V., Granada Salazar, D., Figueroa, C., Corrales, J. C., & Casanova, J. F. (2023). Estimation of Water Turbidity in Drinking Water Treatment Plants Using Machine Learning Based on Water and Meteorological Data. Environmental Sciences Proceedings, 25(1), Article 1. https://doi.org/10.3390/ECWS-7-14326
 
