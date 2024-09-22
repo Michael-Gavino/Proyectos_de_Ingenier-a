@@ -98,7 +98,6 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
 
 ## Discusiones
 El Internet de las cosas (IoT) es una tecnología fundamental que conecta dispositivos inteligentes para monitorear aspectos cotidianos, ofreciendo potencial en áreas como la salud, la agricultura y la educación, entre otros.
-
 La autonomía de los dispositivos IoT, su capacidad para intercambiar información y tomar decisiones sin intervención humana directa, junto con la posibilidad de optimizar procesos y reducir costos laborales, destacan como ventajas clave para empresas y entornos empresariales.
 
 ## Conclusiones
