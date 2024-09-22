@@ -40,6 +40,9 @@ Utilización  de la plataforma Arduino Cloud
   imagen  2
 5. conectar el cable micro USB al ordenador.
    imagen  3
+
+
+
 Codigo Utilizado
 
 
