@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3fd8c4b7-f935-465c-9dac-d8f8c53b6d00)# Curso: Proyectos de Ingeniería I
+# Curso: Proyectos de Ingeniería I
 
 ## Integrantes:
 - Castillo Ore Lourdes
