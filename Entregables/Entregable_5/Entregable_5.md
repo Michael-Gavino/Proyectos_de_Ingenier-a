@@ -92,13 +92,7 @@ void initProperties() {
 WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
 
 
-![9eff5adc-687f-413b-ae97-2c182fcdf85c](https://github.com/user-attachments/assets/bfedfa6a-10cd-4366-bdb9-938cfd04e43a)
-
-![b25b03fc-a39c-4502-81f0-588475945234](https://github.com/user-attachments/assets/47c69448-59f8-450c-a63a-7ce22f1ac258)
-
-
-
-https://github.com/user-attachments/assets/805bd2b2-e5bd-4056-8abd-5abd97cfd44c
+                                         imagenes y videos del resultado falta
   
  
 
