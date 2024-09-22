@@ -29,11 +29,17 @@ Este informe se centra en aspectos como la configuración y programación de dis
 
 ## Referencias
 -Tariq, U., Ahmed, I., Bashir, A. K., & Shaukat, K. (2023). A Critical Cybersecurity Analysis and Future Research Directions for the Internet of Things: A Comprehensive Review. Sensors, 23(8), 4117. https://doi.org/10.3390/s23084117
+
 -什么是物联网和什么是物联网设备? (2020b, enero 14). /. https://www.kaspersky.com.cn/resource-center/definitions/what-is-iot
+
 -Rueda, M. M., Navas-Pareja, M. R., Gutiérrez, I. S., & del Olmo Fernández, M. J. A. (2023). Internet de las Cosas en las Instituciones de Educación Superior. Los ODS como elemento transversal y clave para el cambio hacia una educación de calidad, 111.
+
 -Soori, M., Arezoo, B., & Dastres, R. (2023). Internet of things for smart factories in industry 4.0, a review. Internet Of Things And Cyber-Physical Systems, 3, 192-204. https://doi.org/10.1016/j.iotcps.2023.04.006
+
 -Tariq, U., Ahmed, I., Bashir, A. K., & Shaukat, K. (2023). A critical cybersecurity analysis and future research directions for the internet of things: A comprehensive review. Sensors, 23(8). MDPI. https://doi.org/10.3390/s23084117
-(Tariq et al.,2023)
+
+
 -Barrio, M. (2018). Internet de las cosas. Madrid: Reus.http://scielo.senescyt.gob.ec/scielo.php?pid=S1390-65422017000100244&script=sci_abstract&tlng=pt
+
 
 
