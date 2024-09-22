@@ -30,132 +30,624 @@
  */
 // Generated on: 06.09.2024 21:57:14
 
-/* Includes ---------------------------------------------------------------- */
+#include <stdio.h>
+#include <stdlib.h>
 #include <Decteccion_de_gestos_inferencing.h>
-#include <Arduino_LSM9DS1.h>
+#include "edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h"
+#include "edge-impulse-sdk/tensorflow/lite/c/common.h"
+#include "edge-impulse-sdk/tensorflow/lite/micro/micro_mutable_op_resolver.h"
+#include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 
-#define NUM_FEATURES 124 // Número total de características esperadas (62 pares de X, Y)
-
-// Array para almacenar las lecturas del acelerómetro
-float features[NUM_FEATURES];
-
-int raw_feature_get_data(size_t offset, size_t length, float *out_ptr) {
-    memcpy(out_ptr, features + offset, length * sizeof(float));
-    return 0;
+#if EI_CLASSIFIER_PRINT_STATE
+#if defined(__cplusplus) && EI_C_LINKAGE == 1
+extern "C" {
+    extern void ei_printf(const char *format, ...);
 }
-
-void setup() {
-    Serial.begin(115200);
-    while (!Serial);
-    Serial.println("Edge Impulse Inferencing Demo");
-
-    pinMode(LEDR, OUTPUT);
-    pinMode(LEDG, OUTPUT);
-    pinMode(LEDB, OUTPUT);
-
-    turn_off_leds(); // Apaga todos los LEDs al inicio
-
-    if (!IMU.begin()) {
-        Serial.println("Failed to initialize IMU!");
-        while (1);
-    }
-}
-
-void loop() {
-    ei_printf("Edge Impulse standalone inferencing (Arduino)\n");
-
-    // Captura las coordenadas en tiempo real desde el acelerómetro
-    for (int i = 0; i < NUM_FEATURES / 2; i++) {
-        if (IMU.accelerationAvailable()) {
-            float x, y, z;
-            IMU.readAcceleration(x, y, z);
-            
-            // Almacena las coordenadas X y Y en el array
-            features[2 * i] = x;
-            features[2 * i + 1] = y;
-        }
-        delay(100); // Ajusta el retraso si es necesario para sincronizar con la velocidad de muestreo
-    }
-
-    if (sizeof(features) / sizeof(float) != EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE) {
-        ei_printf("The size of your 'features' array is not correct. Expected %lu items, but had %lu\n",
-                  EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, sizeof(features) / sizeof(float));
-        delay(1000);
-        return;
-    }
-
-    ei_impulse_result_t result = { 0 };
-
-    signal_t features_signal;
-    features_signal.total_length = sizeof(features) / sizeof(features[0]);
-    features_signal.get_data = &raw_feature_get_data;
-
-    EI_IMPULSE_ERROR res = run_classifier(&features_signal, &result, false /* debug */);
-    if (res != EI_IMPULSE_OK) {
-        ei_printf("ERR: Failed to run classifier (%d)\n", res);
-        return;
-    }
-
-    ei_printf("run_classifier returned: %d\r\n", res);
-    print_inference_result(result);
-
-    delay(1000); // Pausa de 1 segundo antes de repetir el ciclo
-}
-
-void print_inference_result(ei_impulse_result_t result) {
-    ei_printf("Timing: DSP %d ms, inference %d ms, anomaly %d ms\r\n",
-              result.timing.dsp,
-              result.timing.classification,
-              result.timing.anomaly);
-
-    // Variable para almacenar el índice de la categoría más probable
-    int max_index = -1;
-    float max_value = 0.0;
-
-    // Busca la categoría con el valor de confianza más alto
-    for (uint16_t i = 0; i < EI_CLASSIFIER_LABEL_COUNT; i++) {
-        ei_printf("  %s: ", ei_classifier_inferencing_categories[i]);
-        ei_printf("%.5f\r\n", result.classification[i].value);
-
-        if (result.classification[i].value > max_value) {
-            max_value = result.classification[i].value;
-            max_index = i;
-        }
-    }
-
-    // Enciende el LED correspondiente basado en el valor máximo
-    turn_on_leds(max_index);
-
-#if EI_CLASSIFIER_HAS_ANOMALY
-    ei_printf("Anomaly prediction: %.3f\r\n", result.anomaly);
+#else
+extern void ei_printf(const char *format, ...);
 #endif
+#endif
+
+#if defined (__GNUC__)  /* GNU compiler */
+#define ALIGN(X) __attribute__((aligned(X)))
+#define DEFINE_SECTION(x) __attribute__((section(x)))
+#elif defined (_MSC_VER)
+#define ALIGN(X) __declspec(align(X))
+#elif defined (__TASKING__) /* TASKING Compiler */
+#define ALIGN(X) __align(X)
+#define DEFINE_SECTION(x) __attribute__(section(x)))
+#elif defined (__ARMCC_VERSION) /* Arm Compiler */
+#define ALIGN(X) __ALIGNED(x)
+#define DEFINE_SECTION(x) __attribute__((section(x)))
+#elif defined (__ICCARM__) /* IAR Compiler */
+#define ALIGN(X) __ALIGNED(x)
+#define DEFINE_SECTION(x) __attribute__((section(x)))
+#elif defined (__clang__) /* LLVM/Clang Compiler */
+#define ALIGN(X) __ALIGNED(x)
+#define DEFINE_SECTION(x) __attribute__((section(x)))
+#endif
+
+#ifndef EI_MAX_SCRATCH_BUFFER_COUNT
+#ifndef CONFIG_IDF_TARGET_ESP32S3
+#define EI_MAX_SCRATCH_BUFFER_COUNT 4
+#else
+#define EI_MAX_SCRATCH_BUFFER_COUNT 4
+#endif // CONFIG_IDF_TARGET_ESP32S3
+#endif // EI_MAX_SCRATCH_BUFFER_COUNT
+
+#ifndef EI_MAX_OVERFLOW_BUFFER_COUNT
+#define EI_MAX_OVERFLOW_BUFFER_COUNT 10
+#endif // EI_MAX_OVERFLOW_BUFFER_COUNT
+
+using namespace tflite;
+using namespace tflite::ops;
+using namespace tflite::ops::micro;
+
+namespace {
+
+#if defined(EI_CLASSIFIER_ALLOCATION_STATIC_HIMAX) || defined(EI_CLASSIFIER_ALLOCATION_STATIC_HIMAX_GNU)
+constexpr int kTensorArenaSize = 1408;
+#else
+constexpr int kTensorArenaSize = 384;
+#endif
+
+#if defined(EI_CLASSIFIER_ALLOCATION_STATIC)
+#if defined (EI_TENSOR_ARENA_LOCATION)
+#define STRINGIZE(x) #x
+#define STRINGIZE_VALUE_OF(x) STRINGIZE(x)
+uint8_t tensor_arena[kTensorArenaSize] ALIGN(16) DEFINE_SECTION(STRINGIZE_VALUE_OF(EI_TENSOR_ARENA_LOCATION));
+#else
+uint8_t tensor_arena[kTensorArenaSize] ALIGN(16);
+#endif
+#elif defined(EI_CLASSIFIER_ALLOCATION_STATIC_HIMAX)
+#pragma Bss(".tensor_arena")
+uint8_t tensor_arena[kTensorArenaSize] ALIGN(16);
+#pragma Bss()
+#elif defined(EI_CLASSIFIER_ALLOCATION_STATIC_HIMAX_GNU)
+uint8_t tensor_arena[kTensorArenaSize] ALIGN(16) __attribute__((section(".tensor_arena")));
+#else
+#define EI_CLASSIFIER_ALLOCATION_HEAP 1
+uint8_t* tensor_arena = NULL;
+#endif
+
+static uint8_t* tensor_boundary;
+static uint8_t* current_location;
+
+template <int SZ, class T> struct TfArray {
+  int sz; T elem[SZ];
+};
+
+enum used_operators_e {
+  OP_FULLY_CONNECTED, OP_SOFTMAX,  OP_LAST
+};
+
+struct TensorInfo_t { // subset of TfLiteTensor used for initialization from constant memory
+  TfLiteAllocationType allocation_type;
+  TfLiteType type;
+  void* data;
+  TfLiteIntArray* dims;
+  size_t bytes;
+  TfLiteQuantization quantization;
+};
+
+typedef struct {
+  TfLiteTensor tensor;
+  int16_t index;
+} TfLiteTensorWithIndex;
+
+typedef struct {
+  TfLiteEvalTensor tensor;
+  int16_t index;
+} TfLiteEvalTensorWithIndex;
+
+TfLiteContext ctx{};
+static const int MAX_TFL_TENSOR_COUNT = 4;
+static TfLiteTensorWithIndex tflTensors[MAX_TFL_TENSOR_COUNT];
+static const int MAX_TFL_EVAL_COUNT = 4;
+static TfLiteEvalTensorWithIndex tflEvalTensors[MAX_TFL_EVAL_COUNT];
+TfLiteRegistration registrations[OP_LAST];
+
+namespace g0 {
+const TfArray<2, int> tensor_dimension0 = { 2, { 1,117 } };
+const TfArray<1, float> quant0_scale = { 1, { 0.94262427091598511, } };
+const TfArray<1, int> quant0_zero = { 1, { -123 } };
+const TfLiteAffineQuantization quant0 = { (TfLiteFloatArray*)&quant0_scale, (TfLiteIntArray*)&quant0_zero, 0 };
+const ALIGN(8) int32_t tensor_data1[3] = { -68, 74, -63, };
+const TfArray<1, int> tensor_dimension1 = { 1, { 3 } };
+const TfArray<1, float> quant1_scale = { 1, { 0.00098927435465157032, } };
+const TfArray<1, int> quant1_zero = { 1, { 0 } };
+const TfLiteAffineQuantization quant1 = { (TfLiteFloatArray*)&quant1_scale, (TfLiteIntArray*)&quant1_zero, 0 };
+const ALIGN(16) int8_t tensor_data2[3*8] = { 
+  48, 51, 101, 46, -127, 78, 33, 74, 
+  -101, -31, -13, -102, 30, 57, -63, -1, 
+  -16, -122, 67, -118, 56, 101, -96, 106, 
+};
+const TfArray<2, int> tensor_dimension2 = { 2, { 3,8 } };
+const TfArray<1, float> quant2_scale = { 1, { 0.0055509726516902447, } };
+const TfArray<1, int> quant2_zero = { 1, { 0 } };
+const TfLiteAffineQuantization quant2 = { (TfLiteFloatArray*)&quant2_scale, (TfLiteIntArray*)&quant2_zero, 0 };
+const ALIGN(16) int32_t tensor_data3[8] = { 11, 11, -10, 5, 9, -7, 4, -5, };
+const TfArray<1, int> tensor_dimension3 = { 1, { 8 } };
+const TfArray<1, float> quant3_scale = { 1, { 0.0028106824029237032, } };
+const TfArray<1, int> quant3_zero = { 1, { 0 } };
+const TfLiteAffineQuantization quant3 = { (TfLiteFloatArray*)&quant3_scale, (TfLiteIntArray*)&quant3_zero, 0 };
+const ALIGN(16) int8_t tensor_data4[8*117] = { 
+  45, 95, -57, 24, -62, 6, 66, 6, -2, 4, 84, -3, 73, -47, -127, 48, 7, -3, -17, -63, 39, 8, 45, 59, 40, 5, 10, -34, 34, -67, -77, 49, 34, -7, 56, -4, 39, -20, 41, 73, -44, 11, -51, 49, -13, -23, 82, 41, -5, -9, 73, 79, -44, 37, 67, 63, 57, 41, 4, 64, -53, 60, 45, 18, -11, -7, 6, -16, 61, -23, -39, 72, -36, -46, -6, 28, 52, 38, -34, 85, 25, 0, 67, -34, 81, -52, -35, -1, -1, 72, -32, -32, -59, -78, -40, -2, -28, -10, 69, -19, 62, -3, 31, 54, 44, -49, -111, 23, -15, -12, -39, -35, 34, -8, 24, 30, 15, 
+  -68, -68, -25, 73, -42, 63, -60, 70, 1, -8, -20, -48, 36, -57, 46, 45, -56, -22, 75, 74, 39, -33, 34, 23, 16, -48, -58, -27, -55, 35, 35, -70, -19, 42, 28, 52, -39, -51, -1, -45, 73, 0, -35, 45, -4, 80, 58, 73, 13, -21, -6, -9, 45, -69, -58, 75, 37, -46, -27, -14, 47, 83, -31, -10, -64, 4, -14, -6, 3, 79, -8, 9, 7, 82, 17, 0, -22, 2, -7, -74, 66, -40, 19, -35, -59, 57, 56, 18, -57, 25, -42, 56, 68, -24, 3, 26, -2, 60, 72, -15, -23, 24, -62, 35, 61, 83, -39, 86, -5, -39, 61, -13, 42, -47, -18, 78, 65, 
+  37, 81, -73, -30, -70, -72, 23, 29, -50, 4, 21, -67, 25, -81, -50, 54, 33, -56, 42, 15, 60, -14, -12, -3, 14, -64, -64, -63, 3, -82, -61, 10, -72, 33, 61, -52, 25, -64, -21, -38, 16, -7, -5, -46, 0, -8, 16, -49, 47, -67, 63, -71, -45, 21, 76, 31, -76, -49, 38, 43, 0, 51, -41, -16, -53, 59, -32, -15, -69, -69, -47, 42, -75, 9, -30, -46, -79, 24, -77, -31, 31, -67, -55, -18, 35, -23, 63, 63, 33, -58, -71, -30, 14, 33, 7, 33, -66, -66, 64, -77, 27, 18, -62, 7, 50, -75, -4, -53, -6, 38, 17, -33, -7, -71, 36, -46, -3, 
+  -57, 19, -46, -57, 91, -41, 58, 6, 62, -82, -6, -62, -51, -1, -20, 25, 83, 42, 16, 5, 35, 49, 50, 54, 4, 42, 54, -40, 53, 36, 51, 40, 53, 36, 37, 33, -24, -12, -85, 54, -92, -30, 7, -25, 32, 23, 65, -41, 66, 41, -49, -18, -26, -62, 82, -39, 81, 60, 4, 40, 49, 28, -1, 74, 4, -46, 0, -37, 31, -5, 62, 76, 30, -9, -37, -31, -5, -48, 65, 21, 52, 12, 75, -59, 44, 46, 23, 12, -59, 21, 78, -37, -80, 11, -64, 15, 26, 13, -16, 73, -50, 41, -38, 30, -4, 20, 21, 27, 81, -41, 87, -18, 26, 24, -19, 35, 48, 
+  67, -51, 20, 73, -55, 23, 13, 65, -8, 7, -59, 47, 60, 65, 25, 25, -37, -45, -25, -39, -25, -47, -48, 1, -44, -2, -1, 17, 53, -16, -43, 34, -36, -18, 46, -38, -14, 81, -12, 33, 59, 2, 58, -33, -27, 4, 71, -24, 25, -13, 2, 44, -6, 72, -52, -8, -41, 23, 39, -23, -14, 46, 56, 56, -13, 55, 38, -56, -1, 57, -57, 70, -58, -55, 61, 42, -22, 31, -61, -21, 71, -64, -57, 6, -39, -18, 50, 32, -22, -38, -24, 56, 47, 65, -53, 27, -55, -42, 10, 5, 10, -6, -6, -34, -17, -68, -42, -16, -25, 59, 43, -69, 59, 19, -57, 50, 70, 
+  -28, 24, -11, 26, 29, 6, -47, 3, -11, 45, -30, 60, 6, 36, -30, 14, -69, 14, -7, 54, -35, -17, 60, -80, -16, -75, 7, 29, -43, 64, -79, 57, 7, -26, 45, 6, -21, -46, 50, -31, -70, -80, 29, 36, 12, -29, -66, -50, -53, -46, -63, -63, -14, 45, -24, -14, -11, -21, 61, 65, 46, -38, 28, 42, -63, 13, -46, 47, 14, 16, -41, -19, -60, 26, -49, -21, 15, 61, -28, -45, 44, -61, 65, -10, 10, 9, -19, -30, 14, 63, 41, 25, 4, 44, -46, 24, 51, -41, 3, -69, 42, 59, -48, 22, -29, -59, 49, 44, 11, -30, 5, 53, -27, -80, -56, -62, -12, 
+  25, 6, 2, 20, -16, -27, -39, -43, -63, -87, -45, 1, -69, -46, -49, -21, -22, 80, -3, -19, -30, 29, -8, 22, -47, -22, 56, 6, -8, -25, 5, -72, 38, -46, -61, 21, -70, 18, -72, -26, -46, -99, 52, 17, -42, 71, 41, 28, 18, 29, -34, 63, -63, 73, 73, -24, -21, -57, 62, 62, -26, -66, -18, -11, -63, 82, -8, 50, -12, -1, 57, 59, -53, 50, -47, 51, 75, 52, -51, 16, -17, -27, -42, -8, -53, -48, 0, -5, 85, 78, -41, -55, -23, -69, -45, -54, 57, -55, 19, -21, -10, -77, 38, -10, 37, -10, -96, -7, -17, 48, -19, 11, 15, 76, 18, 110, -2, 
+  49, 6, 31, 20, 51, 15, -59, 38, -27, -40, 59, -72, 39, -70, -27, 23, -14, 65, -33, -14, -28, 22, -66, -21, 45, -20, -9, 52, 72, 53, -30, -46, 40, 61, -6, -53, 29, -21, 28, -35, -26, 10, -40, -30, -66, -54, 21, 41, -3, 15, 55, -72, 25, -23, -72, -44, -64, -32, -2, -62, -21, 12, 32, 24, -3, -24, -33, 45, 31, -36, -74, -19, 42, 23, 53, 11, 14, 25, -20, 15, 9, -31, -37, -35, -51, -31, -10, 5, -21, 20, -18, -5, -64, 14, 11, 45, 13, 45, 34, -14, -18, 37, 39, 47, -56, 75, 22, 51, -16, 36, 20, 46, -61, -28, -64, 10, -70, 
+};
+const TfArray<2, int> tensor_dimension4 = { 2, { 8,117 } };
+const TfArray<1, float> quant4_scale = { 1, { 0.0029817633330821991, } };
+const TfArray<1, int> quant4_zero = { 1, { 0 } };
+const TfLiteAffineQuantization quant4 = { (TfLiteFloatArray*)&quant4_scale, (TfLiteIntArray*)&quant4_zero, 0 };
+const TfArray<2, int> tensor_dimension5 = { 2, { 1,8 } };
+const TfArray<1, float> quant5_scale = { 1, { 0.17821639776229858, } };
+const TfArray<1, int> quant5_zero = { 1, { -128 } };
+const TfLiteAffineQuantization quant5 = { (TfLiteFloatArray*)&quant5_scale, (TfLiteIntArray*)&quant5_zero, 0 };
+const TfArray<2, int> tensor_dimension6 = { 2, { 1,3 } };
+const TfArray<1, float> quant6_scale = { 1, { 0.11950137466192245, } };
+const TfArray<1, int> quant6_zero = { 1, { 72 } };
+const TfLiteAffineQuantization quant6 = { (TfLiteFloatArray*)&quant6_scale, (TfLiteIntArray*)&quant6_zero, 0 };
+const TfArray<2, int> tensor_dimension7 = { 2, { 1,3 } };
+const TfArray<1, float> quant7_scale = { 1, { 0.00390625, } };
+const TfArray<1, int> quant7_zero = { 1, { -128 } };
+const TfLiteAffineQuantization quant7 = { (TfLiteFloatArray*)&quant7_scale, (TfLiteIntArray*)&quant7_zero, 0 };
+const TfLiteFullyConnectedParams opdata0 = { kTfLiteActRelu, kTfLiteFullyConnectedWeightsFormatDefault, false, false };
+const TfArray<3, int> inputs0 = { 3, { 0,4,3 } };
+const TfArray<1, int> outputs0 = { 1, { 5 } };
+const TfLiteFullyConnectedParams opdata1 = { kTfLiteActNone, kTfLiteFullyConnectedWeightsFormatDefault, false, false };
+const TfArray<3, int> inputs1 = { 3, { 5,2,1 } };
+const TfArray<1, int> outputs1 = { 1, { 6 } };
+const TfLiteSoftmaxParams opdata2 = { 1 };
+const TfArray<1, int> inputs2 = { 1, { 6 } };
+const TfArray<1, int> outputs2 = { 1, { 7 } };
+};
+
+TensorInfo_t tensorData[] = {
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension0, 117, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant0))}, },
+{ kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data1, (TfLiteIntArray*)&g0::tensor_dimension1, 12, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant1))}, },
+{ kTfLiteMmapRo, kTfLiteInt8, (int32_t*)g0::tensor_data2, (TfLiteIntArray*)&g0::tensor_dimension2, 24, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant2))}, },
+{ kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data3, (TfLiteIntArray*)&g0::tensor_dimension3, 32, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant3))}, },
+{ kTfLiteMmapRo, kTfLiteInt8, (int32_t*)g0::tensor_data4, (TfLiteIntArray*)&g0::tensor_dimension4, 936, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant4))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 128), (TfLiteIntArray*)&g0::tensor_dimension5, 8, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant5))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 16), (TfLiteIntArray*)&g0::tensor_dimension6, 3, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant6))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension7, 3, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant7))}, },
+};
+
+#ifndef TF_LITE_STATIC_MEMORY
+TfLiteNode tflNodes[3] = {
+{ (TfLiteIntArray*)&g0::inputs0, (TfLiteIntArray*)&g0::outputs0, (TfLiteIntArray*)&g0::inputs0, nullptr, nullptr, const_cast<void*>(static_cast<const void*>(&g0::opdata0)), nullptr, 0, },
+{ (TfLiteIntArray*)&g0::inputs1, (TfLiteIntArray*)&g0::outputs1, (TfLiteIntArray*)&g0::inputs1, nullptr, nullptr, const_cast<void*>(static_cast<const void*>(&g0::opdata1)), nullptr, 0, },
+{ (TfLiteIntArray*)&g0::inputs2, (TfLiteIntArray*)&g0::outputs2, (TfLiteIntArray*)&g0::inputs2, nullptr, nullptr, const_cast<void*>(static_cast<const void*>(&g0::opdata2)), nullptr, 0, },
+};
+#else
+TfLiteNode tflNodes[3] = {
+{ (TfLiteIntArray*)&g0::inputs0, (TfLiteIntArray*)&g0::outputs0, (TfLiteIntArray*)&g0::inputs0, nullptr, const_cast<void*>(static_cast<const void*>(&g0::opdata0)), nullptr, 0, },
+{ (TfLiteIntArray*)&g0::inputs1, (TfLiteIntArray*)&g0::outputs1, (TfLiteIntArray*)&g0::inputs1, nullptr, const_cast<void*>(static_cast<const void*>(&g0::opdata1)), nullptr, 0, },
+{ (TfLiteIntArray*)&g0::inputs2, (TfLiteIntArray*)&g0::outputs2, (TfLiteIntArray*)&g0::inputs2, nullptr, const_cast<void*>(static_cast<const void*>(&g0::opdata2)), nullptr, 0, },
+};
+#endif
+
+used_operators_e used_ops[] =
+{OP_FULLY_CONNECTED, OP_FULLY_CONNECTED, OP_SOFTMAX, };
+
+
+// Indices into tflTensors and tflNodes for subgraphs
+const size_t tflTensors_subgraph_index[] = {0, 8, };
+const size_t tflNodes_subgraph_index[] = {0, 3, };
+
+// Input/output tensors
+static const int in_tensor_indices[] = {
+  0, 
+};
+
+static const int out_tensor_indices[] = {
+  7, 
+};
+
+
+size_t current_subgraph_index = 0;
+
+static void init_tflite_tensor(size_t i, TfLiteTensor *tensor) {
+  tensor->type = tensorData[i].type;
+  tensor->is_variable = false;
+
+#if defined(EI_CLASSIFIER_ALLOCATION_HEAP)
+  tensor->allocation_type = tensorData[i].allocation_type;
+#else
+  tensor->allocation_type = (tensor_arena <= tensorData[i].data && tensorData[i].data < tensor_arena + kTensorArenaSize) ? kTfLiteArenaRw : kTfLiteMmapRo;
+#endif
+  tensor->bytes = tensorData[i].bytes;
+  tensor->dims = tensorData[i].dims;
+
+#if defined(EI_CLASSIFIER_ALLOCATION_HEAP)
+  if(tensor->allocation_type == kTfLiteArenaRw){
+    uint8_t* start = (uint8_t*) ((uintptr_t)tensorData[i].data + (uintptr_t) tensor_arena);
+
+    tensor->data.data =  start;
+  }
+  else {
+      tensor->data.data = tensorData[i].data;
+  }
+#else
+  tensor->data.data = tensorData[i].data;
+#endif // EI_CLASSIFIER_ALLOCATION_HEAP
+  tensor->quantization = tensorData[i].quantization;
+  if (tensor->quantization.type == kTfLiteAffineQuantization) {
+    TfLiteAffineQuantization const* quant = ((TfLiteAffineQuantization const*)(tensorData[i].quantization.params));
+    tensor->params.scale = quant->scale->data[0];
+    tensor->params.zero_point = quant->zero_point->data[0];
+  }
+
 }
 
-void turn_off_leds() {
-    digitalWrite(LEDR, HIGH);
-    digitalWrite(LEDG, HIGH);
-    digitalWrite(LEDB, HIGH);
+static void init_tflite_eval_tensor(int i, TfLiteEvalTensor *tensor) {
+
+  tensor->type = tensorData[i].type;
+
+  tensor->dims = tensorData[i].dims;
+
+#if defined(EI_CLASSIFIER_ALLOCATION_HEAP)
+  auto allocation_type = tensorData[i].allocation_type;
+  if(allocation_type == kTfLiteArenaRw) {
+    uint8_t* start = (uint8_t*) ((uintptr_t)tensorData[i].data + (uintptr_t) tensor_arena);
+
+    tensor->data.data =  start;
+  }
+  else {
+    tensor->data.data = tensorData[i].data;
+  }
+#else
+  tensor->data.data = tensorData[i].data;
+#endif // EI_CLASSIFIER_ALLOCATION_HEAP
 }
 
-void turn_on_leds(int pred_index) {
-    turn_off_leds(); // Apaga todos los LEDs antes de encender uno
+static void* overflow_buffers[EI_MAX_OVERFLOW_BUFFER_COUNT];
+static size_t overflow_buffers_ix = 0;
+static void * AllocatePersistentBufferImpl(struct TfLiteContext* ctx,
+                                       size_t bytes) {
+  void *ptr;
+  uint32_t align_bytes = (bytes % 16) ? 16 - (bytes % 16) : 0;
 
-    switch (pred_index) {
-        case 0:
-            // Enciende LED rojo
-            digitalWrite(LEDR, LOW);
-            break;
-        case 1:
-            // Enciende LED verde
-            digitalWrite(LEDG, LOW);
-            break;
-        case 2:
-            // Enciende LED azul
-            digitalWrite(LEDB, LOW);
-            break;
-        default:
-            // Apaga todos los LEDs si el índice no es válido
-            turn_off_leds();
-            break;
+  if (current_location - (bytes + align_bytes) < tensor_boundary) {
+    if (overflow_buffers_ix > EI_MAX_OVERFLOW_BUFFER_COUNT - 1) {
+      ei_printf("ERR: Failed to allocate persistent buffer of size %d, does not fit in tensor arena and reached EI_MAX_OVERFLOW_BUFFER_COUNT\n",
+        (int)bytes);
+      return NULL;
     }
+
+    // OK, this will look super weird, but.... we have CMSIS-NN buffers which
+    // we cannot calculate beforehand easily.
+    ptr = ei_calloc(bytes, 1);
+    if (ptr == NULL) {
+      ei_printf("ERR: Failed to allocate persistent buffer of size %d\n", (int)bytes);
+      return NULL;
+    }
+    overflow_buffers[overflow_buffers_ix++] = ptr;
+    return ptr;
+  }
+
+  current_location -= bytes;
+
+  // align to the left aligned boundary of 16 bytes
+  current_location -= 15; // for alignment
+  current_location += 16 - ((uintptr_t)(current_location) & 15);
+
+  ptr = current_location;
+  memset(ptr, 0, bytes);
+
+  return ptr;
 }
+
+typedef struct {
+  size_t bytes;
+  void *ptr;
+} scratch_buffer_t;
+
+static scratch_buffer_t scratch_buffers[EI_MAX_SCRATCH_BUFFER_COUNT];
+static size_t scratch_buffers_ix = 0;
+
+static TfLiteStatus RequestScratchBufferInArenaImpl(struct TfLiteContext* ctx, size_t bytes,
+                                                int* buffer_idx) {
+  if (scratch_buffers_ix > EI_MAX_SCRATCH_BUFFER_COUNT - 1) {
+    ei_printf("ERR: Failed to allocate scratch buffer of size %d, reached EI_MAX_SCRATCH_BUFFER_COUNT\n",
+      (int)bytes);
+    return kTfLiteError;
+  }
+
+  scratch_buffer_t b;
+  b.bytes = bytes;
+
+  b.ptr = AllocatePersistentBufferImpl(ctx, b.bytes);
+  if (!b.ptr) {
+    ei_printf("ERR: Failed to allocate scratch buffer of size %d\n",
+      (int)bytes);
+    return kTfLiteError;
+  }
+
+  scratch_buffers[scratch_buffers_ix] = b;
+  *buffer_idx = scratch_buffers_ix;
+
+  scratch_buffers_ix++;
+
+  return kTfLiteOk;
+}
+
+static void* GetScratchBufferImpl(struct TfLiteContext* ctx, int buffer_idx) {
+  if (buffer_idx > (int)scratch_buffers_ix) {
+    return NULL;
+  }
+  return scratch_buffers[buffer_idx].ptr;
+}
+
+static const uint16_t TENSOR_IX_UNUSED = 0x7FFF;
+
+static void ResetTensors() {
+  for (size_t ix = 0; ix < MAX_TFL_TENSOR_COUNT; ix++) {
+    tflTensors[ix].index = TENSOR_IX_UNUSED;
+  }
+  for (size_t ix = 0; ix < MAX_TFL_EVAL_COUNT; ix++) {
+    tflEvalTensors[ix].index = TENSOR_IX_UNUSED;
+  }
+}
+
+static TfLiteTensor* GetTensorImpl(const struct TfLiteContext* context,
+                               int tensor_idx) {
+
+  tensor_idx = tflTensors_subgraph_index[current_subgraph_index] + tensor_idx;
+
+  for (size_t ix = 0; ix < MAX_TFL_TENSOR_COUNT; ix++) {
+    // already used? OK!
+    if (tflTensors[ix].index == tensor_idx) {
+      return &tflTensors[ix].tensor;
+    }
+    // passed all the ones we've used, so end of the list?
+    if (tflTensors[ix].index == TENSOR_IX_UNUSED) {
+      // init the tensor
+      init_tflite_tensor(tensor_idx, &tflTensors[ix].tensor);
+      tflTensors[ix].index = tensor_idx;
+      return &tflTensors[ix].tensor;
+    }
+  }
+
+  ei_printf("ERR: GetTensor called beyond MAX_TFL_TENSOR_COUNT (%d)\n", MAX_TFL_TENSOR_COUNT);
+  return nullptr;
+}
+
+static TfLiteEvalTensor* GetEvalTensorImpl(const struct TfLiteContext* context,
+                                       int tensor_idx) {
+
+  tensor_idx = tflTensors_subgraph_index[current_subgraph_index] + tensor_idx;
+
+  for (size_t ix = 0; ix < MAX_TFL_EVAL_COUNT; ix++) {
+    // already used? OK!
+    if (tflEvalTensors[ix].index == tensor_idx) {
+      return &tflEvalTensors[ix].tensor;
+    }
+    // passed all the ones we've used, so end of the list?
+    if (tflEvalTensors[ix].index == TENSOR_IX_UNUSED) {
+      // init the tensor
+      init_tflite_eval_tensor(tensor_idx, &tflEvalTensors[ix].tensor);
+      tflEvalTensors[ix].index = tensor_idx;
+      return &tflEvalTensors[ix].tensor;
+    }
+  }
+
+  ei_printf("ERR: GetTensor called beyond MAX_TFL_EVAL_COUNT (%d)\n", (int)MAX_TFL_EVAL_COUNT);
+  return nullptr;
+}
+
+class EonMicroContext : public MicroContext {
+ public:
+ 
+  EonMicroContext(): MicroContext(nullptr, nullptr, nullptr) { }
+
+  void* AllocatePersistentBuffer(size_t bytes) {
+    return AllocatePersistentBufferImpl(nullptr, bytes);
+  }
+
+  TfLiteStatus RequestScratchBufferInArena(size_t bytes,
+                                           int* buffer_index) {
+  return RequestScratchBufferInArenaImpl(nullptr, bytes, buffer_index);
+  }
+
+  void* GetScratchBuffer(int buffer_index) {
+    return GetScratchBufferImpl(nullptr, buffer_index);
+  }
+ 
+  TfLiteTensor* AllocateTempTfLiteTensor(int tensor_index) {
+    return GetTensorImpl(nullptr, tensor_index);
+  }
+
+  void DeallocateTempTfLiteTensor(TfLiteTensor* tensor) {
+    return;
+  }
+
+  bool IsAllTempTfLiteTensorDeallocated() {
+    return true;
+  }
+
+  TfLiteEvalTensor* GetEvalTensor(int tensor_index) {
+    return GetEvalTensorImpl(nullptr, tensor_index);
+  }
+
+};
+
+
+} // namespace
+
+TfLiteStatus tflite_learn_4_init( void*(*alloc_fnc)(size_t,size_t) ) {
+#ifdef EI_CLASSIFIER_ALLOCATION_HEAP
+  tensor_arena = (uint8_t*) alloc_fnc(16, kTensorArenaSize);
+  if (!tensor_arena) {
+    ei_printf("ERR: failed to allocate tensor arena\n");
+    return kTfLiteError;
+  }
+#else
+  memset(tensor_arena, 0, kTensorArenaSize);
+#endif
+  tensor_boundary = tensor_arena;
+  current_location = tensor_arena + kTensorArenaSize;
+
+  EonMicroContext micro_context_;
+  
+  // Set microcontext as the context ptr
+  ctx.impl_ = static_cast<void*>(&micro_context_);
+  // Setup tflitecontext functions
+  ctx.AllocatePersistentBuffer = &AllocatePersistentBufferImpl;
+  ctx.RequestScratchBufferInArena = &RequestScratchBufferInArenaImpl;
+  ctx.GetScratchBuffer = &GetScratchBufferImpl;
+  ctx.GetTensor = &GetTensorImpl;
+  ctx.GetEvalTensor = &GetEvalTensorImpl;
+  ctx.ReportError = &MicroContextReportOpError;
+
+  ctx.tensors_size = 8;
+  for (size_t i = 0; i < 8; ++i) {
+    TfLiteTensor tensor;
+    init_tflite_tensor(i, &tensor);
+    if (tensor.allocation_type == kTfLiteArenaRw) {
+      auto data_end_ptr = (uint8_t*)tensor.data.data + tensorData[i].bytes;
+      if (data_end_ptr > tensor_boundary) {
+        tensor_boundary = data_end_ptr;
+      }
+    }
+  }
+
+  if (tensor_boundary > current_location /* end of arena size */) {
+    ei_printf("ERR: tensor arena is too small, does not fit model - even without scratch buffers\n");
+    return kTfLiteError;
+  }
+
+  registrations[OP_FULLY_CONNECTED] = Register_FULLY_CONNECTED();
+  registrations[OP_SOFTMAX] = Register_SOFTMAX();
+
+  for (size_t g = 0; g < 1; ++g) {
+    current_subgraph_index = g;
+    for(size_t i = tflNodes_subgraph_index[g]; i < tflNodes_subgraph_index[g+1]; ++i) {
+      if (registrations[used_ops[i]].init) {
+        tflNodes[i].user_data = registrations[used_ops[i]].init(&ctx, (const char*)tflNodes[i].builtin_data, 0);
+      }
+    }
+  }
+  current_subgraph_index = 0;
+
+  for(size_t g = 0; g < 1; ++g) {
+    current_subgraph_index = g;
+    for(size_t i = tflNodes_subgraph_index[g]; i < tflNodes_subgraph_index[g+1]; ++i) {
+      if (registrations[used_ops[i]].prepare) {
+        ResetTensors();
+        TfLiteStatus status = registrations[used_ops[i]].prepare(&ctx, &tflNodes[i]);
+        if (status != kTfLiteOk) {
+          return status;
+        }
+      }
+    }
+  }
+  current_subgraph_index = 0;
+
+  return kTfLiteOk;
+}
+
+TfLiteStatus tflite_learn_4_input(int index, TfLiteTensor *tensor) {
+  init_tflite_tensor(in_tensor_indices[index], tensor);
+  return kTfLiteOk;
+}
+
+TfLiteStatus tflite_learn_4_output(int index, TfLiteTensor *tensor) {
+  init_tflite_tensor(out_tensor_indices[index], tensor);
+  return kTfLiteOk;
+}
+
+TfLiteStatus tflite_learn_4_invoke() {
+  for (size_t i = 0; i < 3; ++i) {
+    ResetTensors();
+
+    TfLiteStatus status = registrations[used_ops[i]].invoke(&ctx, &tflNodes[i]);
+
+#if EI_CLASSIFIER_PRINT_STATE
+    ei_printf("layer %lu\n", i);
+    ei_printf("    inputs:\n");
+    for (size_t ix = 0; ix < tflNodes[i].inputs->size; ix++) {
+      auto d = tensorData[tflNodes[i].inputs->data[ix]];
+
+      size_t data_ptr = (size_t)d.data;
+
+      if (d.allocation_type == kTfLiteArenaRw) {
+        data_ptr = (size_t)tensor_arena + data_ptr;
+      }
+
+      if (d.type == TfLiteType::kTfLiteInt8) {
+        int8_t* data = (int8_t*)data_ptr;
+        ei_printf("        %lu (%zu bytes, ptr=%p, alloc_type=%d, type=%d): ", ix, d.bytes, data, (int)d.allocation_type, (int)d.type);
+        for (size_t jx = 0; jx < d.bytes; jx++) {
+          ei_printf("%d ", data[jx]);
+        }
+      }
+      else {
+        float* data = (float*)data_ptr;
+        ei_printf("        %lu (%zu bytes, ptr=%p, alloc_type=%d, type=%d): ", ix, d.bytes, data, (int)d.allocation_type, (int)d.type);
+        for (size_t jx = 0; jx < d.bytes / 4; jx++) {
+          ei_printf("%f ", data[jx]);
+        }
+      }
+      ei_printf("\n");
+    }
+    ei_printf("\n");
+
+    ei_printf("    outputs:\n");
+    for (size_t ix = 0; ix < tflNodes[i].outputs->size; ix++) {
+      auto d = tensorData[tflNodes[i].outputs->data[ix]];
+
+      size_t data_ptr = (size_t)d.data;
+
+      if (d.allocation_type == kTfLiteArenaRw) {
+        data_ptr = (size_t)tensor_arena + data_ptr;
+      }
+
+      if (d.type == TfLiteType::kTfLiteInt8) {
+        int8_t* data = (int8_t*)data_ptr;
+        ei_printf("        %lu (%zu bytes, ptr=%p, alloc_type=%d, type=%d): ", ix, d.bytes, data, (int)d.allocation_type, (int)d.type);
+        for (size_t jx = 0; jx < d.bytes; jx++) {
+          ei_printf("%d ", data[jx]);
+        }
+      }
+      else {
+        float* data = (float*)data_ptr;
+        ei_printf("        %lu (%zu bytes, ptr=%p, alloc_type=%d, type=%d): ", ix, d.bytes, data, (int)d.allocation_type, (int)d.type);
+        for (size_t jx = 0; jx < d.bytes / 4; jx++) {
+          ei_printf("%f ", data[jx]);
+        }
+      }
+      ei_printf("\n");
+    }
+    ei_printf("\n");
+#endif // EI_CLASSIFIER_PRINT_STATE
+
+    if (status != kTfLiteOk) {
+      return status;
+    }
+  }
+  return kTfLiteOk;
+}
+
+TfLiteStatus tflite_learn_4_reset( void (*free_fnc)(void* ptr) ) {
+#ifdef EI_CLASSIFIER_ALLOCATION_HEAP
+  free_fnc(tensor_arena);
+#endif
+
+  // scratch buffers are allocated within the arena, so just reset the counter so memory can be reused
+  scratch_buffers_ix = 0;
+
+  // overflow buffers are on the heap, so free them first
+  for (size_t ix = 0; ix < overflow_buffers_ix; ix++) {
+    ei_free(overflow_buffers[ix]);
+  }
+  overflow_buffers_ix = 0;
+  return kTfLiteOk;
+}
+
