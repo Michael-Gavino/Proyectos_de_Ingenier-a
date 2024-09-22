@@ -97,13 +97,17 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
  
 
 ## Discusiones
+
 El Internet de las cosas (IoT) es una tecnología fundamental que conecta dispositivos inteligentes para monitorear aspectos cotidianos, ofreciendo potencial en áreas como la salud, la agricultura y la educación, entre otros.
 La autonomía de los dispositivos IoT, su capacidad para intercambiar información y tomar decisiones sin intervención humana directa, junto con la posibilidad de optimizar procesos y reducir costos laborales, destacan como ventajas clave para empresas y entornos empresariales.
 
 ## Conclusiones
+
 El sistema IoT ha sido implementado con efectividad  al combinar la plataforma Arduino Cloud con el dispositivo MKR IoT Carrier. Esta unión ha posibilitado la supervisión en tiempo real y el control de variables ambientales de forma efectiva. Gracias a esta configuración, ahora se pueden ver al instante datos fundamentales como la temperatura, humedad y niveles de luz a través de una conexión fluida con la nube. Este avance brinda un acceso sin precedentes a información precisa y oportuna, mejorando significativamente la toma de decisiones y la eficiencia en los procesos involucrados.
 
+
 ## Referencias
+
 -Tariq, U., Ahmed, I., Bashir, A. K., & Shaukat, K. (2023). A Critical Cybersecurity Analysis and Future Research Directions for the Internet of Things: A Comprehensive Review. Sensors, 23(8), 4117. https://doi.org/10.3390/s23084117
 
 -什么是物联网和什么是物联网设备? (2020b, enero 14). /. https://www.kaspersky.com.cn/resource-center/definitions/what-is-iot
