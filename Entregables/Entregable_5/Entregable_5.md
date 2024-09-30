@@ -111,9 +111,12 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
 
 ![Pruebas_Trabajo 2](https://github.com/user-attachments/assets/56105efb-47ae-4708-b233-710be83d5260)
 
-[![Ver video](https://github.com/Michael-Gavino/Proyectos_de_Ingenier-a/blob/main/Imagenes/video_1.mp4)](https://github.com/Michael-Gavino/Proyectos_de_Ingenier-a/blob/main/Imagenes/video_1.mp4)
+## Precionar en la imagen para descargar el video y poder observarlo
+## Video 01
+[![Descargar para ver video](https://github.com/user-attachments/assets/6b480420-175a-4300-bcfa-b2fcb0c1737c)](https://github.com/Michael-Gavino/Proyectos_de_Ingenier-a/blob/main/Imagenes/video_1.mp4)
 
-
+## Video 02
+[![Descargar para ver video](https://github.com/user-attachments/assets/ccfd8390-bb12-42d2-bca3-d5f046176eeb)](https://github.com/Michael-Gavino/Proyectos_de_Ingenier-a/blob/main/Imagenes/video_2.mp4)
 
 ## Discusiones
 
