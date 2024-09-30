@@ -111,6 +111,8 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
 
 ![Pruebas_Trabajo 2](https://github.com/user-attachments/assets/56105efb-47ae-4708-b233-710be83d5260)
 
+[![Ver video](https://github.com/Michael-Gavino/Proyectos_de_Ingenier-a/blob/main/Imagenes/video_1.mp4)](https://github.com/Michael-Gavino/Proyectos_de_Ingenier-a/blob/main/Imagenes/video_1.mp4)
+
 
 
 ## Discusiones
