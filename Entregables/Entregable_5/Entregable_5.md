@@ -97,6 +97,22 @@ WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);
 
 ## imagenes y videos
 
+![Pruebas_Trabajo 1111](https://github.com/user-attachments/assets/5778b86a-bdd7-460d-9c7c-b8ba22a3dbf7)
+
+![Pruebas_Trabajo 11](https://github.com/user-attachments/assets/dc988a1c-5314-45fd-bf73-8d8abbdc558c)
+
+![Pruebas_Trabajo 9](https://github.com/user-attachments/assets/e263c21e-fb53-4486-9161-92cd24cab2e5)
+
+![Pruebas_Trabajo 8](https://github.com/user-attachments/assets/6c6c70a8-870e-49c2-82c7-d5af800dc9a6)
+
+![Pruebas_Trabajo 4](https://github.com/user-attachments/assets/4655793c-8434-47d3-b58b-b92345332da5)
+
+![Pruebas_Trabajo 3](https://github.com/user-attachments/assets/b63d9402-530b-4105-9b05-a03f5e4d9a07)
+
+![Pruebas_Trabajo 2](https://github.com/user-attachments/assets/56105efb-47ae-4708-b233-710be83d5260)
+
+
+
 ## Discusiones
 
 El Internet de las cosas (IoT) es una tecnología fundamental que conecta dispositivos inteligentes para monitorear aspectos cotidianos, ofreciendo potencial en áreas como la salud, la agricultura y la educación, entre otros.
