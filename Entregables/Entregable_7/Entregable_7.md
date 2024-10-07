@@ -82,7 +82,6 @@ El proyecto consiste en el diseño de un PCB utilizando EasyEDA para controlar l
 
 
 ## Resultado Esperado:
-## Resultado Esperado:
 El PCB permite  tiene ls conexiones adecuadas para la lectura continua de los niveles de pH, conductividad y turbidez, además de la visualización en tiempo real de los valores en la pantalla OLED. El sistema es portátil gracias a la batería de 9V y está diseñado para funcionar de manera eficiente con componentes de bajo consumo.
 
 Durante el proceso de diseño, se presentaron algunas complicaciones con los componentes, ya que algunos no tenían los **footprints** adecuados. Esto requirió  buscar componentes en la biblioteca de EasyEDA para encontrar aquellos que fueran compatibles con el diseño del PCB.
