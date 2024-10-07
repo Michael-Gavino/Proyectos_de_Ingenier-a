@@ -2,7 +2,8 @@
 
 ![Circuito2 0](https://github.com/user-attachments/assets/4c2665d9-b891-4c33-acec-96627cc93715)
 
-![PCB_Entregable](https://github.com/user-attachments/assets/252aceff-a0e5-4fd6-a88b-a37353bb521d)
+
+![PCB_PCB_Entregable_2024-10-06](https://github.com/user-attachments/assets/7586b5ac-f197-4f6d-8085-0757e8472cbe)
 
 
 ![Captura de pantalla 2024-10-06 233132](https://github.com/user-attachments/assets/09fb301a-66db-4d19-a7a8-842018f14c39)
