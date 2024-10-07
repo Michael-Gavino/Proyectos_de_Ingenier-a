@@ -8,6 +8,7 @@
 
 ![Captura de pantalla 2024-10-06 233132](https://github.com/user-attachments/assets/09fb301a-66db-4d19-a7a8-842018f14c39)
 
+![Captura de pantalla 2024-10-06 233952](https://github.com/user-attachments/assets/35d6e817-4868-49fa-8496-ee2825f8db25)
 
 ## Descripción del Proyecto:
 El proyecto consiste en el diseño de un PCB utilizando EasyEDA para controlar los sensores de pH, conductividad electrica y turbidez del agua, mostrar los parametros del agua en una pantalla OLED. El sistema está basado en un microcontrolador **Arduino Nano** y está alimentado por una batería de 9V. Se ha diseñado para que la información pueda mostrarse en tiempo real.
