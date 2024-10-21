@@ -45,51 +45,52 @@ El proyecto **HydroNex 2.0** se encuentra actualmente en la fase **TRL-1**, enfo
 
 1. **Identificación del principio de la tecnología 🌐🖥️:**
 
-***Objetivo :*** 
+**Objetivo :**
 En esta etapa inicial, el objetivo principal es explorar cómo la tecnología de sensores puede aplicarse a la clasificación del agua, en particular para detectar diferentes tipos como agua recolectada del atrapa neblinas.
 
-***Acciones :*** 
+**Acciones :**
 El equipo de HydroNex 2.0 está investigando cómo utilizar sensores especializados para medir los parámetros clave de la calidad del agua, como el pH, la turbidez, la conductividad eléctrica, y otros indicadores. Estos sensores deben ser capaces de proporcionar datos precisos y en tiempo real.
 Resultados esperados : Se espera identificar un conjunto de principios que definen cómo los sensores pueden diferenciar entre los tipos de agua. En esta fase, no se está construyendo un sistema funcional, sino que se está explorando el potencial y los fundamentos teóricos de la tecnología.
    
 2. **Generación de conocimiento ⚙️📝📍:**
 
-***Objetivo :*** 
+**Objetivo :**
 En paralelo con la identificación de principios, se está generando nuevo conocimiento a partir de experimentos y simulaciones. Estos datos permiten entender mejor cómo varían los parámetros de calidad del agua bajo diferentes condiciones.}
 
-***Acciones :***
+**Acciones :**
 Se están realizando a cabo pruebas experimentales en laboratorios utilizando muestras de diferentes tipos de agua (potable, recolectada, etc.). Estas pruebas incluyen la evaluación de los cambios en los parámetros de calidad del agua en condiciones controladas.
 Simulaciones computacionales están siendo realizadas para modelar el comportamiento de los sensores bajo distintas condiciones de contaminación o pureza del agua.
 Resultados esperados : La generación de este conocimiento permitirá establecer las bases para el desarrollo de algoritmos que, en fases posteriores, clasifiquen el agua en tiempo real de manera precisa. En esta etapa, la información obtenida es principalmente de carácter exploratorio y analítico.
 
 3. **Pregunta de investigación 📚📋✅:**
 
-***Objetivo :*** 
+**Objetivo :**
 En TRL-1, una parte crítica es definir la pregunta de investigación que guiará el desarrollo del proyecto. En este caso, la pregunta se centra en cómo un sistema de monitoreo basado en sensores puede proporcionar información en tiempo real para clasificar y tratar diferentes tipos de agua.
 
-***Acciones :***
+**Acciones :**
 El equipo está trabajando en formular hipótesis sobre los factores que afectan la clasificación de agua a través de sensores. Estas hipótesis serán probadas a través de experimentos a lo largo de las fases tempranas del proyecto.
 También se están estableciendo criterios para evaluar si la tecnología tiene el potencial de ser efectiva y sostenible en el futuro.
 Resultados esperados : El resultado en esta fase es tener una pregunta clara y bien formulada que dirigirá la investigación en las siguientes etapas. No se espera responder completamente la pregunta en TRL-1, sino más bien comenzar a recolectar información que permita hacerlo más adelante.
 
 4. **No declara un uso aplicativo de la tecnología 🌀🔏:**
 
-***Objetivo :*** 
+**Objetivo :**
 En TRL-1, el objetivo no es desarrollar un producto o sistema funcional, sino entender los principios que podrían, en fases futuras, llevar a una aplicación práctica. En este sentido, aún no se ha definido un uso industrial o comercial específico para la tecnología.
 
-***Acciones :***
+**Acciones :**
 El equipo está enfocado exclusivamente en la investigación básica. Las discusiones sobre aplicaciones comerciales o industriales se están dejando para fases más avanzadas, como TRL-3 o TRL-4, cuando haya una mejor comprensión del potencial de la tecnología.
 Resultados esperados : El resultado esperado es que, al finalizar TRL-1, el proyecto haya definido claramente los principios de la tecnología, pero sin comprometerse todavía con aplicaciones prácticas. La decisión sobre cómo y dónde usar la tecnología vendrá después de obtener más conocimiento y pruebas en fases posteriores.
 
 5. **Generación de artículos científicos ⚙️📃🖊️:**
 
-***Objetivo :***
+**Objetivo :**
 Un componente clave de TRL-1 es la difusión del conocimiento generado. En este caso, los resultados obtenidos hasta ahora se están utilizando para elaborar artículos científicos.
 
-***Acciones :***
+**Acciones :**
 Los investigadores están documentando los datos experimentales y los hallazgos obtenidos en las simulaciones. Esto incluye la discusión de cómo varían los parámetros de calidad del agua bajo diferentes condiciones y cómo los sensores responden a estos cambios.
 Se están redactando artículos que explican los resultados preliminares y plantean las posibles direcciones futuras del proyecto.
-Resultados esperados : Estos artículos servirán como base para justificar la continuación del proyecto en las siguientes fases y también contribuirán a la comunidad científica en el campo del monitoreo de calidad del agua.
+
+**Resultados esperados :** Estos artículos servirán como base para justificar la continuación del proyecto en las siguientes fases y también contribuirán a la comunidad científica en el campo del monitoreo de calidad del agua.
 
 ## 🔧 **Contribuciones**
 
