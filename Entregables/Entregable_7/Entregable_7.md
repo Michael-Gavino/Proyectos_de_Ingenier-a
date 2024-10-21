@@ -1,14 +1,15 @@
 # Entregable: Diseño de PCB y sus Componentes
-
-![Circuito2 0](https://github.com/user-attachments/assets/4c2665d9-b891-4c33-acec-96627cc93715)
+![Schematic_Circuito2 0_2024-10-21](https://github.com/user-attachments/assets/5888af52-da0f-409d-9c46-a5a7b0e2a90a)
 
 
 ![PCB_PCB_Entregable_2024-10-06](https://github.com/user-attachments/assets/7586b5ac-f197-4f6d-8085-0757e8472cbe)
 
 
-![Captura de pantalla 2024-10-06 233132](https://github.com/user-attachments/assets/09fb301a-66db-4d19-a7a8-842018f14c39)
+![Captura de pantalla 2024-10-21 181548](https://github.com/user-attachments/assets/318c66cd-ecf2-4931-bf34-3f56fe039028)
 
-![Captura de pantalla 2024-10-06 233952](https://github.com/user-attachments/assets/35d6e817-4868-49fa-8496-ee2825f8db25)
+
+![Captura de pantalla 2024-10-21 182148](https://github.com/user-attachments/assets/4a407b6a-250e-4dd6-8dc8-cd3b26d83344)
+
 
 ## Descripción del Proyecto:
 El proyecto consiste en el diseño de un PCB utilizando EasyEDA para controlar los sensores de pH, conductividad electrica y turbidez del agua, mostrar los parametros del agua en una pantalla OLED. El sistema está basado en un microcontrolador **Arduino Nano** y está alimentado por una batería de 9V. Se ha diseñado para que la información pueda mostrarse en tiempo real.
