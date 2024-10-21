@@ -114,5 +114,4 @@ Imagen 24
 
 ![WhatsApp Image 2024-09-09 at 4 38 53 PM](https://github.com/user-attachments/assets/705c2111-5c8a-47aa-9d1a-1013bb819b75)
 
-
-
+![Imagen](https://github.com/user-attachments/assets/5ea3ff74-3083-4abc-ad8c-eea6055d62c6)
