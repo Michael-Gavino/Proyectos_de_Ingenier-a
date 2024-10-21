@@ -49,7 +49,7 @@ Objetivo : En esta etapa inicial, el objetivo principal es explorar cómo la tec
 Acciones : El equipo de HydroNex 2.0 está investigando cómo utilizar sensores especializados para medir los parámetros clave de la calidad del agua, como el pH, la turbidez, la conductividad eléctrica, y otros indicadores. Estos sensores deben ser capaces de proporcionar datos precisos y en tiempo real.
 Resultados esperados : Se espera identificar un conjunto de principios que definen cómo los sensores pueden diferenciar entre los tipos de agua. En esta fase, no se está construyendo un sistema funcional, sino que se está explorando el potencial y los fundamentos teóricos de la tecnología.
    
-2. **Generación de conocimiento 🖇️📝:**
+2. **Generación de conocimiento ⚙️📝📍:**
 
 Objetivo : En paralelo con la identificación de principios, se está generando nuevo conocimiento a partir de experimentos y simulaciones. Estos datos permiten entender mejor cómo varían los parámetros de calidad del agua bajo diferentes condiciones.
 Acciones :
