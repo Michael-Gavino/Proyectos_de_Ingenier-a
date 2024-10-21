@@ -24,7 +24,7 @@ El **ODS 6** busca garantizar la disponibilidad y la gestión sostenible del agu
 ## 👥 **Integrantes del Equipo**
 
 - Castillo Ore Lourdes
-- Huanca Ampuero Lila Zaray
+- Huanca Ampuero Lila Zarai
 - Gavino Isidro Michael Richard
 - Manosalva Peralta Yojan Alexander
 - Rodriguez Valderrama Bertil Vasthian
