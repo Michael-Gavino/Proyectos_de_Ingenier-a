@@ -62,7 +62,7 @@ Se están realizando a cabo pruebas experimentales en laboratorios utilizando mu
 Simulaciones computacionales están siendo realizadas para modelar el comportamiento de los sensores bajo distintas condiciones de contaminación o pureza del agua.
 Resultados esperados : La generación de este conocimiento permitirá establecer las bases para el desarrollo de algoritmos que, en fases posteriores, clasifiquen el agua en tiempo real de manera precisa. En esta etapa, la información obtenida es principalmente de carácter exploratorio y analítico.
 
-3. **Pregunta de investigación 📚📋:**
+3. **Pregunta de investigación 📚📋✅:**
 
 ***Objetivo :*** 
 En TRL-1, una parte crítica es definir la pregunta de investigación que guiará el desarrollo del proyecto. En este caso, la pregunta se centra en cómo un sistema de monitoreo basado en sensores puede proporcionar información en tiempo real para clasificar y tratar diferentes tipos de agua.
