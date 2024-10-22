@@ -2,7 +2,7 @@
 ![Schematic_Circuito2 0_2024-10-21](https://github.com/user-attachments/assets/5888af52-da0f-409d-9c46-a5a7b0e2a90a)
 
 
-![PCB_PCB_Entregable_2024-10-06](https://github.com/user-attachments/assets/7586b5ac-f197-4f6d-8085-0757e8472cbe)
+![Captura de pantalla 2024-10-21 224711](https://github.com/user-attachments/assets/94db9ee0-00cb-4c71-adf4-cd9cde203830)
 
 
 ![Captura de pantalla 2024-10-21 181548](https://github.com/user-attachments/assets/318c66cd-ecf2-4931-bf34-3f56fe039028)
