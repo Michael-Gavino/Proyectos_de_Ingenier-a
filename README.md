@@ -48,6 +48,52 @@ El proyecto **HydroNex 2.0** se encuentra actualmente en la fase **TRL-1**, enfo
 **Objetivo :**
 En esta etapa inicial, el objetivo principal es explorar cómo la tecnología de sensores puede aplicarse a la clasificación del agua, en particular para detectar diferentes tipos como agua recolectada del atrapa neblinas.
 
+**sensores de turbidez, conductividad eléctrica, y pH, y cómo funcionan mediante los fenómenos físicos:**
+**A. Sensor de Turbidez**
+La turbidez mide la claridad de un líquido, determinada por la cantidad de partículas suspendidas. Un sensor de turbidez utiliza el fenómeno de dispersión de la luz.
+
+- Principio de Funcionamiento: Los sensores de turbidez generalmente emiten un haz de luz (LED) que atraviesa el líquido. Un detector de luz mide la cantidad de luz que se dispersa debido a las partículas presentes.
+
+- Fórmula Aproximada: La turbidez a menudo se expresa en NTU (Nephelometric Turbidity Units) y se relaciona con la intensidad de la luz dispersada (I) en función de la concentración de partículas (C):
+
+![fotouno](https://github.com/user-attachments/assets/270e2592-e747-4cb1-8f4f-343045224bd4)
+
+**Donde 𝐼dispersada es la luz que detecta el sensor y 𝐼incidente es la luz emitida inicialmente.**
+
+**B. Sensor de Conductividad Eléctrica (EC)**
+La conductividad eléctrica mide la capacidad de una solución para conducir electricidad, la cual depende de la cantidad de iones disueltos (como sales, ácidos o bases).
+
+- Principio de Funcionamiento: Los sensores de conductividad eléctrica operan aplicando una corriente eléctrica entre dos electrodos y midiendo la cantidad de corriente que pasa a través de la solución. La mayor cantidad de iones mejora la conductividad.
+
+- Fórmula: La conductividad eléctrica (𝜎) se calcula usando la Ley de Ohm modificada:
+
+![formulados](https://github.com/user-attachments/assets/fc090341-3d65-4103-98be-4c96f44fcf23)
+
+Donde:
+
+**- L** es la distancia entre los electrodos.
+
+**- A** es el área de los electrodos.
+
+**- R** es la resistencia de la solución medida entre los electrodos.
+
+**C. Sensor de pH**
+
+- El pH mide la concentración de iones de hidrógeno (𝐻+) en una solución, lo que determina si es ácida o básica. Principio de Funcionamiento: Los sensores de pH usan un electrodo de vidrio sensible a los iones de hidrógeno, comparando el potencial eléctrico generado por la solución con un electrodo de referencia. El fenómeno subyacente es la potenciometría, que mide el voltaje generado por la actividad de los iones 𝐻+.
+
+- Fórmula: El pH se relaciona con la concentración de 𝐻+ mediante la fórmula:
+
+![formulatres](https://github.com/user-attachments/assets/2c76e69a-b03d-4000-8aab-d31e224a9f08)
+
+
+Donde [𝐻+]es la concentración de iones de hidrógeno en moles por litro.
+
+**TRL (Technology Readiness Level)**
+
+El **TRL - 1** (Nivel de Madurez Tecnológica) indica la etapa más temprana del desarrollo de una tecnología, donde los principios básicos están siendo observados y descritos. En esta etapa, para los sensores mencionados, estaríamos en el punto de la observación científica inicial del fenómeno subyacente (como la dispersión de la luz para turbidez o la conductividad iónica para EC).
+
+En **TRL - 1** se identifican los fenómenos que podrían aplicarse tecnológicamente, pero aún no existe un diseño ni un prototipo. Los sensores se dan cuenta de los cambios en sus entornos a través de principios físicos y químicos fundamentales, como la dispersión de la luz, la conductancia iónica y el potencial electroquímico, que posteriormente se aprovechan para el diseño de dispositivos medibles en etapas más avanzadas.
+ 
 **Acciones :**
 El equipo de HydroNex 2.0 está investigando cómo utilizar sensores especializados para medir los parámetros clave de la calidad del agua, como el pH, la turbidez, la conductividad eléctrica, y otros indicadores. Estos sensores deben ser capaces de proporcionar datos precisos y en tiempo real.
 
