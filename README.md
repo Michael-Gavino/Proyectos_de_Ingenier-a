@@ -83,6 +83,7 @@ Donde:
 
 **Relación:**
 - pH + pOH = 14
+Refleja el equilibrio entre los iones de hidrógeno y los iones hidróxido en una solución. A medida que el pH disminuye (más ácido), el pOH aumenta mas básico. Esto indica que si una solución es muy ácida (pH bajo), tendrá un pOH alto, y si es muy básica (pH alto), tendrá un pOH bajo.
  
 
 - Fórmula: El pH se relaciona con la concentración de 𝐻+ mediante la fórmula:
