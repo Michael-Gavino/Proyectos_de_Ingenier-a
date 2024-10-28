@@ -7,13 +7,13 @@
 
 ## 🌍 **Visión General**
 
-**HydroNex 2.0** es un proyecto innovador que se centra en la clasificación del agua utilizando una combinación de sensores avanzados y tecnologías de apoyo, como la **Inteligencia Artificial (IA)**. Nuestro objetivo es diseñar un sistema que permita analizar la calidad del agua en tiempo real, optimizando su tratamiento y reutilización según el nivel de pureza detectado. Aunque utilizamos IA para mejorar ciertos procesos, el proyecto no se basa completamente en ella, sino que la emplea como una herramienta complementaria dentro de un sistema más amplio.
+**HydroNex 2.0** Proyecto  que se centra en la clasificación del agua utilizando sensores avanzados y tecnologías de apoyo, como la **Inteligencia Artificial (IA)**. Nuestro objetivo es diseñar un sistema que permita  clasificar el agua cumpliendo con los parámetros de la calidad del H2O en tiempo real. Aunque utilizamos IA para mejorar ciertos procesos, el proyecto no se basa completamente en ella, sino que la emplea como una herramienta complementaria dentro de un sistema más amplio.
 
 Este proyecto está alineado con los **Objetivos de Desarrollo Sostenible (ODS)**, específicamente con el **ODS 6**.
 
 ## 🌊 **ODS 6: Agua Limpia y Saneamiento**
 
-El **ODS 6** busca garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos. En el proyecto **HydroNex**, nos comprometemos a mejorar la eficiencia en la gestión del agua a través de tecnologías que aseguren su clasificación adecuada. Al implementar sistemas de monitoreo y análisis de agua en tiempo real, nuestro proyecto contribuye a la mejora en el acceso a agua limpia y en la reutilización de aguas residuales tratadas de forma segura.
+El **ODS 6** busca garantizar la disponibilidad y la gestión sostenible del agua y el saneamiento para todos. En el proyecto **HydroNex**, nos comprometemos a mejorar la eficiencia en la gestión del agua a través de tecnologías que aseguren su clasificación adecuada. Al implementar sistemas de monitoreo y análisis de agua en tiempo real, nuestro proyecto contribuye a la mejora en el acceso de H2O de buena calidad.
 
 ## 🎯 **Objetivos**
 
@@ -33,7 +33,7 @@ El **ODS 6** busca garantizar la disponibilidad y la gestión sostenible del agu
 
 ## 💻 **Tecnologías Utilizadas**
 
-- **Sensores de Calidad de Agua:** Sensores avanzados que monitorean parámetros clave como el pH, la turbidez y la conductividad.
+- **Sensores de Calidad de Agua:** Sensores avanzados que monitorean parámetros(pH, la turbidez y la conductividad).
 - **Sistemas de Monitoreo en Tiempo Real:** Dispositivos conectados que permiten obtener información en tiempo real sobre la calidad del agua.
 - **Procesamiento de Datos:** Herramientas de análisis de datos que ayudan a interpretar la información recolectada por los sensores.
 - **Inteligencia Artificial (IA) de Apoyo:** La IA se utiliza como complemento para mejorar la interpretación de los datos recolectados por los sensores, pero no es el componente principal del proyecto.
@@ -46,24 +46,18 @@ El proyecto **HydroNex 2.0** se encuentra actualmente en la fase **TRL-1**, enfo
 1. **Identificación del principio de la tecnología 🌐🖥️:**
 
 **Objetivo :**
-En esta etapa inicial, el objetivo principal es explorar cómo la tecnología de sensores puede aplicarse a la clasificación del agua, en particular para detectar diferentes tipos como agua recolectada del atrapa neblinas.
+En esta etapa inicial, el objetivo principal es explorar cómo la tecnología de sensores puede aplicarse a la clasificación del agua.
 
 **sensores de turbidez, conductividad eléctrica, y pH, y cómo funcionan mediante los fenómenos físicos:**
 **A. Sensor de Turbidez**
-La turbidez mide la claridad de un líquido, determinada por la cantidad de partículas suspendidas. Un sensor de turbidez utiliza el fenómeno de dispersión de la luz.
-
-- Principio de Funcionamiento: Los sensores de turbidez generalmente emiten un haz de luz (LED) que atraviesa el líquido. Un detector de luz mide la cantidad de luz que se dispersa debido a las partículas presentes.
-
-- Fórmula Aproximada: La turbidez a menudo se expresa en NTU (Nephelometric Turbidity Units) y se relaciona con la intensidad de la luz dispersada (I) en función de la concentración de partículas (C):
+Mide cantidad de  particulas en suspensión  o microorganisnos.
 
 ![fotouno](https://github.com/user-attachments/assets/270e2592-e747-4cb1-8f4f-343045224bd4)
 
 **Donde 𝐼dispersada es la luz que detecta el sensor y 𝐼incidente es la luz emitida inicialmente.**
 
 **B. Sensor de Conductividad Eléctrica (EC)**
-La conductividad eléctrica mide la capacidad de una solución para conducir electricidad, la cual depende de la cantidad de iones disueltos (como sales, ácidos o bases).
-
-- Principio de Funcionamiento: Los sensores de conductividad eléctrica operan aplicando una corriente eléctrica entre dos electrodos y midiendo la cantidad de corriente que pasa a través de la solución. La mayor cantidad de iones mejora la conductividad.
+Capacidad del agua para conducir la electricidad o mide cantidad de iones, mentras hay mas iones mayor es la conductividad. 
 
 - Fórmula: La conductividad eléctrica (𝜎) se calcula usando la Ley de Ohm modificada:
 
@@ -78,8 +72,14 @@ Donde:
 **- R** es la resistencia de la solución medida entre los electrodos.
 
 **C. Sensor de pH**
+Mide la [H+] Y [OH-].
+pH:
+1-3 (acido fuerte )- ácida[h+]
+4-6 (ácido debil )_ ligermente ácida .
+7   (neutro )
+8- 11 ( base débil)- ligeramente alcalina 
+11-14 ( base fuerte )- alcalina[OH-].
 
-- El pH mide la concentración de iones de hidrógeno (𝐻+) en una solución, lo que determina si es ácida o básica. Principio de Funcionamiento: Los sensores de pH usan un electrodo de vidrio sensible a los iones de hidrógeno, comparando el potencial eléctrico generado por la solución con un electrodo de referencia. El fenómeno subyacente es la potenciometría, que mide el voltaje generado por la actividad de los iones 𝐻+.
 
 - Fórmula: El pH se relaciona con la concentración de 𝐻+ mediante la fórmula:
 
