@@ -75,14 +75,15 @@ Donde:
 ### Medición de [H+] y [OH-]
 
 **pH:**
-- **1-3**: Ácido fuerte - ácida [H+]
+- **1-3**: Ácido fuerte - ácida  lo que significa que la [H+]  es muy alta en el agua.
 - **4-6**: Ácido débil - ligeramente ácida
 - **7**: Neutro
 - **8-11**: Base débil - ligeramente alcalina
-- **11-14**: Base fuerte - alcalina [OH-]
+- **11-14**: Base fuerte - alcalina  la [OH-] es muy alta.
 
 **Relación:**
 - pH + pOH = 14
+ 
 
 - Fórmula: El pH se relaciona con la concentración de 𝐻+ mediante la fórmula:
 
