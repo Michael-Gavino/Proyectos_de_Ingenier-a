@@ -72,15 +72,17 @@ Donde:
 **- R** es la resistencia de la solución medida entre los electrodos.
 
 **C. Sensor de pH**
-Mide la [H+] Y [OH-].
-pH:
-1-3 (acido fuerte )- ácida[h+]
-4-6 (ácido debil )_ ligermente ácida .
-7   (neutro )
-8- 11 ( base débil)- ligeramente alcalina 
-11-14 ( base fuerte )- alcalina[OH-].
-pH+ pOH= 14
+### Medición de [H+] y [OH-]
 
+**pH:**
+- **1-3**: Ácido fuerte - ácida [H+]
+- **4-6**: Ácido débil - ligeramente ácida
+- **7**: Neutro
+- **8-11**: Base débil - ligeramente alcalina
+- **11-14**: Base fuerte - alcalina [OH-]
+
+**Relación:**
+- pH + pOH = 14
 
 - Fórmula: El pH se relaciona con la concentración de 𝐻+ mediante la fórmula:
 
