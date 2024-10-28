@@ -79,6 +79,7 @@ pH:
 7   (neutro )
 8- 11 ( base débil)- ligeramente alcalina 
 11-14 ( base fuerte )- alcalina[OH-].
+pH+ pOH= 14
 
 
 - Fórmula: El pH se relaciona con la concentración de 𝐻+ mediante la fórmula:
