@@ -1,14 +1,11 @@
 # Entregable: Diseño de PCB y sus Componentes
-![Schematic_Circuito2 0_2024-10-21](https://github.com/user-attachments/assets/5888af52-da0f-409d-9c46-a5a7b0e2a90a)
 
 
-![Captura de pantalla 2024-10-21 224711](https://github.com/user-attachments/assets/94db9ee0-00cb-4c71-adf4-cd9cde203830)
+![Captura de pantalla 2024-11-17 192453](https://github.com/user-attachments/assets/cd7b5362-588f-4169-a7d7-6191acae804e)
 
 
-![Captura de pantalla 2024-10-21 181548](https://github.com/user-attachments/assets/318c66cd-ecf2-4931-bf34-3f56fe039028)
+![Captura de pantalla 2024-11-17 192646](https://github.com/user-attachments/assets/e6bec9cc-d15e-4119-9901-e6055a832cd3)
 
-
-![Captura de pantalla 2024-10-21 182148](https://github.com/user-attachments/assets/4a407b6a-250e-4dd6-8dc8-cd3b26d83344)
 
 
 ## Descripción del Proyecto:
