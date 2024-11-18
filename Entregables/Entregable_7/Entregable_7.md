@@ -9,54 +9,55 @@
 
 
 ## Descripción del Proyecto:
-El proyecto consiste en el diseño de un PCB utilizando EasyEDA para controlar los sensores de pH, conductividad electrica y turbidez del agua, mostrar los parametros del agua en una pantalla OLED. El sistema está basado en un microcontrolador **Arduino Nano** y está alimentado por una batería de 9V. Se ha diseñado para que la información pueda mostrarse en tiempo real.
+El proyecto consiste en el diseño de un PCB utilizando EasyEDA para controlar los sensores de pH, conductividad electrica y turbidez del agua, mostrar los parametros del agua en una pantalla OLED. El sistema está basado en un microcontrolador **Arduino ESP32_Devkit_V4** y está alimentado por una batería de 5V. Se ha diseñado para que la información pueda mostrarse en tiempo real.
 
 ## Componentes Principales:
 
-### Arduino Nano
-- **Función**: Es el microcontrolador principal que gestiona todas las señales y el procesamiento de datos del sensor de pH.
+### ESP32_Devkit_V4
+- **Función**: Es el microcontrolador principal que gestiona todas las señales y el procesamiento de datos del sensor de pH, conductividad y turbidez.
 - **Conexiones principales**:
-  - Alimentación por el pin **Vin** (batería de 9V).
+  - Alimentación por el pin **Vin** (batería de 5V).
   - Conexiones de datos y reloj (SPI) con la pantalla OLED.
+  - Control de los servomotores para el paso del agua.
 
 ### Sensor de pH
-- **Función**: Mide los niveles de pH del agua y envía los datos al Arduino para procesarlos.
+- **Función**: Mide los niveles de pH del agua y envía los datos al microcontrolador para procesarlos.
 - **Conexiones**:
-  - **VCC** al pin de 5V del Arduino Nano.
-  - **GND** al pin GND del Arduino Nano.
-  - Señal de salida a un pin analógico del Arduino(**A3**).
+  - **VCC** a 5V de la fuente externa.
+  - **GND** al GND de la fuente externa.
+  - Señal de salida a un pin analógico del microcontrolador(**GPIO_36**).
 
 ### Sensor de Conductividad
 - **Función**: Mide la conductividad del líquido, proporcionando información sobre la concentración de iones.
 - **Conexiones**:
-  - **VCC** al pin de 5V del Arduino Nano.
-  - **GND** al pin GND del Arduino Nano.
-  - Señal de salida a un pin analógico del Arduino (**A2**).
+  - **VCC** a 5V de la fuente externa.
+  - **GND** al GND de la fuente externa.
+  - Señal de salida a un pin analógico del microcontrolador (**GPIO_39**).
 
 ### Sensor de Turbidez
 - **Función**: Detecta la turbidez (claridad) del líquido, que indica la cantidad de partículas suspendidas.
 - **Conexiones**:
-  - **VCC** al pin de 5V del Arduino Nano.
-  - **GND** al pin GND del Arduino Nano.
-  - Señal de salida a un pin analógico del Arduino (ej. **A1**).
+  - **VCC** a 5V de la fuente externa.
+  - **GND** al GND de la fuente externa.
+  - Señal de salida a un pin analógico del Arduino (**GPIO_34**).
 
 ### Pantalla OLED (SPI, 4 pines)
 - **Función**: Muestra los valores medidos del pH, conductividad y turbidez en tiempo real.
 - **Conexiones**:
-  - **VCC** al pin 5V del Arduino Nano.
-  - **GND** al GND del Arduino Nano.
-  - **SDA (MOSI)** al pin **D11** del Arduino Nano.
-  - **SCK** al pin **D13** del Arduino Nano.
+  - **VCC** a 5V de la fuente externa.
+  - **GND** al GND de la fuente externa.
+  - **SDA** al pin **GPIO_21** del microcontrolador.
+  - **SCK** al pin **GPIO_22** del microcontrolador.
 
 ### Servomotores (x2)
 - **Función**: Los servomotores se encargan de realizar movimientos mecánicos en respuesta a las mediciones de los sensores.
 - **Conexiones**:
   - **VCC** al pin de 5V del Arduino Nano.
   - **GND** al pin GND del Arduino Nano.
-  - Señal de control a un pin digital del Arduino (**A4** y **A5**).
+  - Señal de control a un pin digital del Arduino (**GPIO_18** y **GPIO_19**).
 
-### Batería de 9V
-- **Función**: Proporciona energía al sistema a través del pin **Vin** del Arduino Nano, que regula la tensión a 5V para alimentar tanto el Arduino como los periféricos. Ademas para el ruteo se retiro la bateria, ya que podemos hacer una conexion directa aun cuando la bateria no este dentro del PCB.
+### Batería de 7.4V
+- **Función**: Proporciona energía al sistema a través del pin **Vin** al ESP32_Devkit_V4, esta regulada la tensión a 5V para alimentar tanto el microcontrolador como los periféricos de los sensores. Ademas para el ruteo se retiro la bateria, ya que podemos hacer una conexion directa aun cuando la bateria no este dentro del PCB.
 
 ## Proceso de Diseño del PCB:
 
@@ -67,20 +68,17 @@ El proyecto consiste en el diseño de un PCB utilizando EasyEDA para controlar l
 - Luego, el esquema se convirtió en un diseño de PCB, donde se colocaron estratégicamente los componentes para minimizar la longitud de las pistas y optimizar el espacio.
 
 ### Ruteo Automático:
-- Se utilizó el ruteo automático para conectar todas las pistas en la PCB, utilizando dos capas:
-  - **Capa superior** (pistas en rojo).
+- Se utilizó el ruteo automático para conectar todas las pistas en la PCB, utilizando la capa inferior:
   - **Capa inferior** (pistas en azul) para evitar cruces entre las pistas.
 
 ### Consideraciones de Diseño:
-- Se utilizó una resistencia **pull-up** en las líneas de comunicación SPI para evitar errores en la transmisión de datos entre el Arduino Nano y la pantalla OLED.
 - Se dejó espacio para posibles expansiones.
-- El **autoruteo** distribuyó las pistas en ambos lados del PCB:
-  - **Capa superior** (en rojo) para algunas conexiones.
-  - **Capa inferior** (en azul) para evitar cruces y mantener el diseño compacto.
+- El **autoruteo** distribuyó las pistas en el PCB:
+  - **Capa inferior** (en azul) el diseño se puedo realizar en una capa de la placa.
 
 
 ## Resultado Esperado:
-El PCB permite  tiene ls conexiones adecuadas para la lectura continua de los niveles de pH, conductividad y turbidez, además de la visualización en tiempo real de los valores en la pantalla OLED. El sistema es portátil gracias a la batería de 9V y está diseñado para funcionar de manera eficiente con componentes de bajo consumo.
+El PCB permite  tiene las conexiones adecuadas para la lectura continua de los niveles de pH, conductividad y turbidez, además de la visualización en tiempo real de los valores en la pantalla OLED. El sistema es portátil gracias a la batería de de 7.4V, está diseñado para funcionar de manera eficiente con componentes de bajo consumo.
 
 Durante el proceso de diseño, se presentaron algunas complicaciones con los componentes, ya que algunos no tenían los **footprints** adecuados. Esto requirió  buscar componentes en la biblioteca de EasyEDA para encontrar aquellos que fueran compatibles con el diseño del PCB.
 
