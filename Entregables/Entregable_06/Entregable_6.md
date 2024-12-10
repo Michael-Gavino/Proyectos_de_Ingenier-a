@@ -10,13 +10,15 @@
 - Seleccionamos "análisis estructural" y creamos una simulación estática.
 
 ![Simulación](https://github.com/user-attachments/assets/ec56048c-c82c-4ec4-ac39-655494104e4e)
+![Captura de pantalla 2024-12-09 234730](https://github.com/user-attachments/assets/2e303bd1-6383-4b90-99ba-7c95914fddab)
 
 ## **3. Mallado (meshing)**
 - Seleccionamos las piezas a mallar.
 - Ajustamos la finura del mallado, priorizando zonas críticas (como el cilindro).
 - Refinamos el mallado en áreas específicas.
 
-![Mallado](https://github.com/user-attachments/assets/14be93f9-607e-4487-9126-41a8d9a1fb3d)
+
+![Captura de pantalla 2024-12-09 235122](https://github.com/user-attachments/assets/692942d1-a349-44e3-8341-e8ce72f1bb9e)
 
 ## **4. Asignación de materiales**
 - Seleccionamos y aplicamos material a las piezas (PLA).
@@ -27,13 +29,14 @@
 - Establecemos las caras que estarán fijas en la simulación.
 - Aplicamos una fuerza (-19.6 en el eje Y por ser 2 litros de agua y de diametro el cilindro tiene 10 cm).
 
-![Soporte](https://github.com/user-attachments/assets/a9b6731f-4a1d-4563-96e8-83335cc2fcdf)
+![Captura de pantalla 2024-12-09 234608](https://github.com/user-attachments/assets/dae2b794-e139-4db1-982e-cffdf01c24e4)
+
 
 ## **6. Simulación y refinamiento**
 - Generamos el mallado inicial y aplicar refinamientos locales si es necesario.
 - Ejecutamos la simulación en pasos incrementales si es un análisis no lineal.
 
-![Refinamiento](https://github.com/user-attachments/assets/11983286-43f7-4bc7-a0b0-7275b36cb318)
+![Captura de pantalla 2024-12-09 234832](https://github.com/user-attachments/assets/67fe9240-9ee7-41b5-9ebc-3f1ba6de8b94)
 
 ## **7. Revisión de resultados**
 - Revisamos los resultados de esfuerzo (en pascales o megapascales).
